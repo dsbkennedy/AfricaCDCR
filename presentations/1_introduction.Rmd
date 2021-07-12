@@ -1,0 +1,196 @@
+
+# Session 1: Introduction
+
+-   Course structure
+-   Why R?
+-   Installing R
+-   Setting up files/folders
+-   R packages
+-   Importing data
+-   Useful resources
+
+## Course structure
+
+Presentations built around content developed for the [Epidemiologist R handbook](https://epirhandbook.com/)
+
+-   An excellent resource for all skill/experience levels
+
+-   Direct towards specific sections for you to work through in your own time
+
+-   2 hours sessions, twice a week to present key topics and answer questions
+
+-   p
+
+## Why R?
+
+[![Why Learn R? 10 Handy Reasons to Learn R programming Language](images/reasons_to_learn_R-01.jpg){width="400"}](https://data-flair.training/blogs/why-learn-r/)
+
+## Installing R
+
+For this course, you will need to install 2 items:
+
+1.  R programming language
+
+2.  R Studio
+
+    -   Integrated Development Environment (IDE)
+
+    -   A very helpful resource for writing and running R code
+
+    You will need to install them in this order - First R, then R studio
+
+[Guide to installing R](https://www.earthdatascience.org/courses/earth-analytics/document-your-science/setup-r-rstudio/)
+
+## Setting up files and folders
+
+!["Massive Wall of Organized Documents" by Zeusandhera is licensed with CC BY-SA 2.0. To view a copy of this license, visit <https://creativecommons.org/licenses/by-sa/2.0/>](https://live.staticflickr.com/2057/2112069242_2220d54bfb_b.jpg){width="300"}
+
+### Best practice
+
+Setting up files and folders will make your analysis (and life!) easier
+
+-   Folder structure
+
+-   Naming files and folders
+
+### Folder structure
+
+R Studio works best when you use its project function
+
+-   Each project contains all of your inputs, outputs and code
+
+-   This also makes it easier to share folders with colleagues
+
+    -   Everything is in one place!
+
+Projects are covered in more detail in the Epidemiologist R handbook: [Chapter 6 "R Projects"](https://epirhandbook.com/r-projects.html)
+
+### Naming files and folders
+
+If you want to share your code with colleagues or when you return to code after several weeks/months you will be grateful that you gave your files and folders meaningful names!
+
+Many organisations have style guides to ensure that teams can collaborate on coding projects
+
+-   [Tidyverse style guide](https://style.tidyverse.org/files.html#names)
+
+[![Tidyverse Style Guide - 1.2 Organisation](images/code_organisation.png){width="800"}](https://style.tidyverse.org/files.html#names)
+
+-   Key points to remember for naming
+
+    -   Keep the name short
+
+        -   Instead of "*data_import_of_file_for_analysis.R*"
+
+            -   "*import_file.R*"
+
+    -   Avoid spaces!
+
+        -   Instead of "*import file.R*"
+
+            -   "\_" "*import_file.R*"
+            -   "-" "*import-file.R*"
+            -   camelCase "*importFile.R*"
+
+## Navigating in R studio
+
+## R packages
+
+What is an R package?
+
+*An R package is a collection of functions which you can use to import, clean, analyse and report your data*
+
+Link to Epidemiologist R handbook - 3.7 "[Packages](https://epirhandbook.com/r-basics.html#packages)"
+
+Packages can simplify your workflow by combining multiple steps into a smaller number of commands
+
+Example: [readxl](https://readxl.tidyverse.org/) is a package of functions used to import data from Excel to R.
+
+### Installing a package
+
+install.packages("readxl")
+
+We have asked R to install the package "readxl".
+
+The installation has been successful. You do not need to re install the packages every time you start a new project as they are saved in your library.
+
+-   In R, red text does not mean there has been an error!
+
+    You will now be able to see the package in your list of packages
+
+    ![](images/install_readxl.png){width="250"}
+
+### Loading a package
+
+Now that `readxl` has been installed, you will be able to load it and use its functions
+
+```{r}
+library(readxl)
+```
+
+![](images/load_readxl.png){width="250"}
+
+When the package has been successfully loaded, you will see a tick mark in the box.
+
+#### Pacman
+
+It is good practice to load all packages at the start of a script. This can help you to see which packages are being loaded and it ensures that you can write code without interruptions from the `library` command.
+
+There is a package called `pacman` which can help with this process. When you run `pacman::p_load` you can list all of the packages you want to load. If the package has not previously been installed, `pacman` will install it. If the package has been installed, `pacman` will load it.
+
+```{r}
+pacman::p_load(readxl,here)
+```
+
+### Using a package
+
+Each package has multiple functions that you can use on your data.
+
+To read more about a particular package, type
+
+```{r}
+?readxl
+```
+
+![Help documentation for readxl](images/help_readxl.png){width="250"}
+
+## Importing data
+
+For this example, we want to import data that is currently stored in an Excel formatted file ".xlsx"
+
+So we can use the function *read_xlsx f*rom the `readxl` package
+
+```{r}
+read_xlsx(here('data','AfricaCovid','AfricaCovid.xlsx'))
+```
+
+But what does this show? And how can we use it?
+
+-   Before importing a file from Excel, it may be helpful to open it in Excel so we can see what data are stored in the file
+
+![](images/africa_covid_screenshot.png){width="250"}
+
+So when we tell R to use the function read_xlsx, it reads the first sheet which is called "ReadMore".
+
+It looks like this is a summary sheet with information about when data for each country was last updated.
+
+So how do we tell R to read in a different sheet from the Excel file?
+
+*Question - How many confirmed cases of COVID were recorded across Africa in July 2020?*
+
+First step - Import data from the sheet containing information on COVID cases
+
+We can use the `excel_sheets` function from `readxl` to get the names of all sheets in the Excel workbook
+
+```{r}
+excel_sheets(here('data','AfricaCovid','AfricaCovid.xlsx'))
+```
+
+From this list we can see that we want to import data from the sheet "Infected_per_day".
+
+```{r}
+read_xlsx(here('data','AfricaCovid','AfricaCovid.xlsx'), sheet="Infected_per_day")
+```
+
+We can see a snapshot of the data from the sheet "Infected_per_day"
+
+## Useful resources

@@ -1,0 +1,324 @@
+
+# Session 2: Data management
+
+-   Objects
+
+-   Tidy data
+
+-   Data types
+
+-   Dates
+
+-   Pivoting and grouping data
+
+-   Removing duplicates
+
+-   Best practice in coding
+
+## Objects
+
+### In R, everything is an object
+
+So far we have installed, loaded and used a package (`readxl`)
+
+But how do we use the information generated from these actions?
+
+We assign the information to "objects"
+
+[Section in Epidemiologist for R handbook about Objects](https://epirhandbook.com/r-basics.html#objects)
+
+*"Everything you store in R - datasets, variables, a list of village names, a total population number, even outputs such as graphs - are **objects** which are **assigned a name** and **can be referenced** in later commands."*
+
+To explain objects, we will calculate a value, assign it to an object and then use the object for a second calculation.
+
+```{r}
+2+2
+```
+
+We can assign the calculation "2+2" to an object called "a"
+
+```{r}
+a <- 2+2
+```
+
+We can then use the object a to show the results of the calculation
+
+```{r}
+a
+```
+
+We can also use this value for further calculations such as adding 4 to the object a
+
+```{r}
+a + 4
+b <- a+4
+
+```
+
+The result of this calculation is now stored in the object "b"
+
+```{r}
+b
+```
+
+### Assigning data to an object
+
+In the previous section, we used the function `read_xlsx` from the package `readxl` to import data from an Excel spreadsheet.
+
+But we didn't assign this to an object, so it is not possible to use the data from the import step.
+
+We can assign the data to an object and then conduct further analysis.
+
+```{r}
+africa_covid_cases <- read_xlsx(here('data','AfricaCovid','AfricaCovid.xlsx'), sheet="Infected_per_day")
+```
+
+You will now see the object in the "Environment" section of R Studio.
+
+![](images/africa_covid_cases_environment.png){width="250"}
+
+Now the data have been assigned to the object "`africa_covid_cases`", we can start to work with the data.
+
+## Data types
+
+## Dates
+
+## Working with data
+
+In the `africa_covid_cases` object, there are 53 obs (observations) of 492 variables.
+
+So what does this mean?
+
+We can look at our data to get more information
+
+```{r}
+africa_covid_cases
+```
+
+ISO - 3 letter code assigned to each country
+
+COUNTRY_NAME - Name of the country
+
+AFRICAN_REGION - African region
+
+43831, 43832, 43833 - This looks like a date format used by Excel. It is the number of days since January 1, 1970.
+
+## Working with data - other ways to look at data
+
+*Show the first 5 rows of the data frame*
+
+The command `head` tells R that we want to see the first few rows and `n=` specifies how many rows we want to see.
+
+```{r}
+head(africa_covid_cases, n=5)
+```
+
+Show the last 7 rows
+
+```{r}
+tail(africa_covid_cases, n=7)
+```
+
+How many unique countries are in the data?
+
+```{r}
+unique(africa_covid_cases$COUNTRY_NAME)
+```
+
+There are 53 unique country values. This is helpful as there are also 53 rows so we can say that each row represents a country.
+
+We can assign the list of unique countries to an object for future reference
+
+```{r}
+country_list <- unique(africa_covid_cases$COUNTRY_NAME)
+```
+
+## Working with data - looking at one variable
+
+In the previous step, the following command was used
+
+unique(africa_covid_cases\$COUNTRY_NAME)
+
+What does "\$" do in R?
+
+It allows us to look at a specific variable within the dataset
+
+```{r}
+unique(africa_covid_cases$AFRICAN_REGION)
+```
+
+And again we can assign this to an object
+
+```{r}
+region_list <- unique(africa_covid_cases$AFRICAN_REGION)
+```
+
+## The tidyverse
+
+When using R, there are many approaches you can use to reach the same result.
+
+There are thousands of packages with many functions and sometimes these packages can overlap.
+
+This can be confusing when you are starting to learn R.
+
+There is a collection of packages with many of the most commonly used packages and this is called the [`tidyverse`](https://www.tidyverse.org/).
+
+```{r}
+tidyverse::tidyverse_packages()
+```
+
+We will use functions from some of these packages over the next few sessions.
+
+## The tidyverse: Tidy data
+
+The key concept when working with packages from the tidyverse is the concept of "tidy data".
+
+[R for Epidemiologist handbook 4.1 From Excel - Tidy data](https://epirhandbook.com/transition-to-r.html?q=tidy#tidy-data)
+
+Principles of "[tidy data](https://r4ds.had.co.nz/tidy-data.html)":
+
+1.  Each variable must have its own column
+2.  Each observation must have its own row
+3.  Each value must have its own cell
+
+## The tidyverse: Why is this important?
+
+Functions from the tidyverse packages are set up to work with tidy data.
+
+If your data are not tidy, then you will have to restructure the data to a tidy format.
+
+Restructuring can take a lot of time if the data are stored in Excel spreadsheets with a lot of formatting/merged columns.
+
+[![Tidy data for efficiency, reproducibility, and collaboration. By Julie Lowndes and Allison Horst.](images/tidy_messy_data-01.jpg){width="250"}](https://www.openscapes.org/blog/2020/10/12/tidy-data/)
+
+## The tidyverse: Checking if data are tidy
+
+In a previous step, we imported COVID case data from an Excel spreadsheet.\
+But how do we know if the data are "tidy"
+
+Remember there are 3 principles
+
+1.  Each variable must have its own column
+2.  Each observation must have its own row
+3.  Each value must have its own cell
+
+```{r}
+head(africa_covid_cases, n=3)
+```
+
+So are the data "tidy"?
+
+The data from the spreadsheet are not "tidy".
+
+The columns "43831, 43832, 43833..." represent different dates. Therefore, this does meet the second argument of "tidy data" - "Each observation must have its own row".But we can reformat the data to make it "tidy" using functions from the packages included in the tidyverse
+
+Remember, first we must install the packages from the tidyverse
+
+`install.packages("tidyverse")`
+
+## The tidyverse: Tidying data
+
+Now that the `tidyverse` has been installed, we can use the functions from the packages to "tidy" the data.One package which is very helpful for this is called "`tidyr`. Instead of loading individual packages, we can load the core tidyverse packages with one command
+
+```{r}
+library(tidyverse)
+```
+
+The core packages contain powerful functions we can use to process, analyse and visualise data.
+
+Remember to look at the documentation for a package type "?[name of package]"
+
+Example -
+
+`?tidyr`
+
+To look at the functions within a package, type [name of package]::
+
+Example
+
+`tidyr::`
+
+To reformat the data to a tidy format, we need to transform the data from wide to long.
+
+The Epidemiologist R handbook has an excellent section describing how to do this
+
+12 - [Pivoting data](https://epirhandbook.com/pivoting-data.html?q=pivot_long#pivoting-data)
+
+## The tidyverse: Wide to long
+
+## [![From the Epidemiologist R handbook](images/wide_to_long-01.png){width="600"}](https://epirhandbook.com/pivoting-data.html?q=pivot_long#wide-to-long)
+
+```{r wide_to_long}
+africa_covid_cases_long <- africa_covid_cases %>% 
+  pivot_longer(cols=4:492, names_to="excel_date", values_to="cases")
+
+```
+
+Transforming data from wide to long usually requires a few attempts to ensure you have achieved the correct outcome!
+
+```{r}
+head(africa_covid_cases_long, n=3)
+```
+
+This looks correct!
+
+You can add comments to code to show other people (and remind yourself!) why you wrote the code in a particular way
+
+```{r wide_to_long_example, eval=FALSE, echo=TRUE}
+africa_covid_cases_long <-
+  africa_covid_cases %>% #tell R to use this dataset
+  pivot_longer(cols = 4:492,#select the columns you want
+               names_to = "excel_date", #name the new date column
+               values_to = "cases") #name the new cases column
+
+```
+
+## Working with dates
+
+[![](images/date_format_example.gif)](https://iso.mit.edu/americanisms/date-format-in-the-united-states/)
+
+To add to the confusion, Excel has 2 additional date systems:
+
+1.  1900 date system
+
+2.  1904 date system
+
+    ![https://support.microsoft.com/en-us/office/date-systems-in-excel-e7fe7167-48a9-4b96-bb53-5612a800b487](images/excel_date_format.png){width="780"}
+
+In the data set we are using, the dates are in this format:
+
+```{r}
+head(africa_covid_cases_long$excel_date)
+```
+
+We can use a function from another package to convert this to a standard date format.
+
+```{r, eval=FALSE, echo=T}
+install.packages("janitor")
+```
+
+```{r}
+library(janitor)
+```
+
+The package [`janitor`](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html) has many helpful functions for cleaning data
+
+```{r}
+africa_covid_cases_long <- africa_covid_cases_long %>% 
+  mutate(date_format=excel_numeric_to_date(as.numeric(excel_date)))
+
+head(africa_covid_cases_long$date_format)
+```
+
+The new variable created "date_format" is in the format YEAR-MONTH-DATE.
+
+We can also check if the values in the new variable look correct
+
+```{r}
+min(africa_covid_cases_long$date_format) #minimum date
+max(africa_covid_cases_long$date_format) #maximum date
+```
+
+We know this is a data set of COVID cases so the date range (from the start of 2020 through to May of 2021) looks to be correct.
+
+## Best practice coding
