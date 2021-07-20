@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Analysis | R Training Manual</title>
+  <meta name="description" content="4 Analysis | R Training Manual" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Analysis | R Training Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Analysis | R Training Manual" />
+  
+  
+  
+
+<meta name="author" content="UK Public Health Rapid Support Team" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="management.html"/>
+<link rel="next" href="presenting-your-data.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Session 1: Introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#course-structure"><i class="fa fa-check"></i><b>2.1</b> Course structure</a></li>
+<li class="chapter" data-level="2.2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#why-r"><i class="fa fa-check"></i><b>2.2</b> Why R?</a></li>
+<li class="chapter" data-level="2.3" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#installing-r"><i class="fa fa-check"></i><b>2.3</b> Installing R</a></li>
+<li class="chapter" data-level="2.4" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#setting-up-files-and-folders"><i class="fa fa-check"></i><b>2.4</b> Setting up files and folders</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#best-practice"><i class="fa fa-check"></i><b>2.4.1</b> Best practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#navigating-in-r-studio"><i class="fa fa-check"></i><b>2.5</b> Navigating in R studio</a></li>
+<li class="chapter" data-level="2.6" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#r-packages"><i class="fa fa-check"></i><b>2.6</b> R packages</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#what-is-an-r-package"><i class="fa fa-check"></i><b>2.6.1</b> What is an R package?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#installing-a-package"><i class="fa fa-check"></i><b>2.6.2</b> Installing a package</a></li>
+<li class="chapter" data-level="2.6.3" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#loading-a-package"><i class="fa fa-check"></i><b>2.6.3</b> Loading a package</a></li>
+<li class="chapter" data-level="2.6.4" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#using-a-package"><i class="fa fa-check"></i><b>2.6.4</b> Using a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#objects"><i class="fa fa-check"></i><b>2.7</b> Objects</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#in-r-everything-is-an-object"><i class="fa fa-check"></i><b>2.7.1</b> In R, everything is an object</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#importing-data"><i class="fa fa-check"></i><b>2.8</b> Importing data</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#assigning-data-to-an-object"><i class="fa fa-check"></i><b>2.8.1</b> Assigning data to an object</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#exporting-data"><i class="fa fa-check"></i><b>2.9</b> Exporting data</a></li>
+<li class="chapter" data-level="2.10" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#exercises"><i class="fa fa-check"></i><b>2.10</b> Exercises</a></li>
+<li class="chapter" data-level="2.11" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#useful-resources"><i class="fa fa-check"></i><b>2.11</b> Useful resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="management.html"><a href="management.html"><i class="fa fa-check"></i><b>3</b> Management</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="management.html"><a href="management.html#data-types"><i class="fa fa-check"></i><b>3.1</b> Data types</a></li>
+<li class="chapter" data-level="3.2" data-path="management.html"><a href="management.html#working-with-data"><i class="fa fa-check"></i><b>3.2</b> Working with data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="management.html"><a href="management.html#looking-at-your-data"><i class="fa fa-check"></i><b>3.2.1</b> Looking at your data</a></li>
+<li class="chapter" data-level="3.2.2" data-path="management.html"><a href="management.html#looking-at-one-variable"><i class="fa fa-check"></i><b>3.2.2</b> Looking at one variable</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="management.html"><a href="management.html#the-tidyverse"><i class="fa fa-check"></i><b>3.3</b> The tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="management.html"><a href="management.html#tidy-data"><i class="fa fa-check"></i><b>3.3.1</b> Tidy data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="management.html"><a href="management.html#checking-if-data-are-tidy"><i class="fa fa-check"></i><b>3.3.2</b> Checking if data are tidy</a></li>
+<li class="chapter" data-level="3.3.3" data-path="management.html"><a href="management.html#tidying-data"><i class="fa fa-check"></i><b>3.3.3</b> Tidying data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="management.html"><a href="management.html#wide-to-long"><i class="fa fa-check"></i><b>3.3.4</b> Wide to long</a></li>
+<li class="chapter" data-level="3.3.5" data-path="management.html"><a href="management.html#piping"><i class="fa fa-check"></i><b>3.3.5</b> Piping</a></li>
+<li class="chapter" data-level="3.3.6" data-path="management.html"><a href="management.html#merging"><i class="fa fa-check"></i><b>3.3.6</b> Merging</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="management.html"><a href="management.html#working-with-dates"><i class="fa fa-check"></i><b>3.4</b> Working with dates</a></li>
+<li class="chapter" data-level="3.5" data-path="management.html"><a href="management.html#useful-resource"><i class="fa fa-check"></i><b>3.5</b> Useful resource</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analysis.html"><a href="analysis.html#looking-at-your-data-1"><i class="fa fa-check"></i><b>4.1</b> Looking at your data</a></li>
+<li class="chapter" data-level="4.2" data-path="analysis.html"><a href="analysis.html#building-an-analysis-dataset"><i class="fa fa-check"></i><b>4.2</b> Building an analysis dataset</a></li>
+<li class="chapter" data-level="4.3" data-path="analysis.html"><a href="analysis.html#answering-questions-with-data"><i class="fa fa-check"></i><b>4.3</b> Answering questions with data</a></li>
+<li class="chapter" data-level="4.4" data-path="analysis.html"><a href="analysis.html#missing-data"><i class="fa fa-check"></i><b>4.4</b> Missing data</a></li>
+<li class="chapter" data-level="4.5" data-path="analysis.html"><a href="analysis.html#grouping-and-pivoting-data"><i class="fa fa-check"></i><b>4.5</b> Grouping and pivoting data</a></li>
+<li class="chapter" data-level="4.6" data-path="analysis.html"><a href="analysis.html#filtering-data"><i class="fa fa-check"></i><b>4.6</b> Filtering data</a></li>
+<li class="chapter" data-level="4.7" data-path="analysis.html"><a href="analysis.html#additional-questions-and-workflows"><i class="fa fa-check"></i><b>4.7</b> Additional questions and workflows</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="analysis.html"><a href="analysis.html#moving-averages"><i class="fa fa-check"></i><b>4.7.1</b> Moving averages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="presenting-your-data.html"><a href="presenting-your-data.html"><i class="fa fa-check"></i><b>5</b> Presenting your data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="presenting-your-data.html"><a href="presenting-your-data.html#presenting-your-results-in-a-table"><i class="fa fa-check"></i><b>5.1</b> Presenting your results in a table</a></li>
+<li class="chapter" data-level="5.2" data-path="presenting-your-data.html"><a href="presenting-your-data.html#visualising-data-using-ggplot"><i class="fa fa-check"></i><b>5.2</b> Visualising data using ggplot</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="presenting-your-data.html"><a href="presenting-your-data.html#epicurves"><i class="fa fa-check"></i><b>5.2.1</b> Epicurves</a></li>
+<li class="chapter" data-level="5.2.2" data-path="presenting-your-data.html"><a href="presenting-your-data.html#visualising-moving-average-data"><i class="fa fa-check"></i><b>5.2.2</b> Visualising moving average data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="presenting-your-data.html"><a href="presenting-your-data.html#useful-resources-1"><i class="fa fa-check"></i><b>5.3</b> Useful resources</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Training Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="analysis" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Analysis</h1>
+<ul>
+<li><p>Looking at your data</p></li>
+<li><p>Building your analysis dataset</p></li>
+<li><p>Answering questions with data</p></li>
+<li><p>Missing data</p></li>
+<li><p>Grouping and pivoting data</p></li>
+<li><p>Filtering data</p></li>
+</ul>
+<div id="looking-at-your-data-1" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Looking at your data</h2>
+<p>Section from Epidemiologist R handbook- <a href="https://epirhandbook.com/descriptive-tables.html">17 Descriptive Tables</a></p>
+<p>There are many functions available to look at descriptive statistics from your dataset. For this example we will use a function that is included in the basic installation of R.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="analysis.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(africa_covid_cases_long)</span></code></pre></div>
+<pre><code>##      ISO            COUNTRY_NAME       AFRICAN_REGION      excel_date       
+##  Length:25917       Length:25917       Length:25917       Length:25917      
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##                                                                             
+##      cases          date_format        
+##  Min.   : -209.0   Min.   :2020-01-01  
+##  1st Qu.:    0.0   1st Qu.:2020-05-02  
+##  Median :    7.0   Median :2020-09-01  
+##  Mean   :  177.6   Mean   :2020-09-01  
+##  3rd Qu.:   78.0   3rd Qu.:2021-01-01  
+##  Max.   :21980.0   Max.   :2021-05-03  
+##  NA&#39;s   :231</code></pre>
+<p>This function provides useful information which we can use for building our approach to designing an analysis workflow.</p>
+<p>For example, we can see from the summary of the date variable that the first record (<code>Min</code>) is from 2020-01-01 and the last record (<code>Max</code>) is from 2021-05-03,</p>
+<p>For the cases variable, the maximum number of cases recorded on one day was 6,195.</p>
+</div>
+<div id="building-an-analysis-dataset" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Building an analysis dataset</h2>
+<p>Before analysing the data, it is a good idea to generate a new dataset which only contains the variables you need to analyse.</p>
+<p>So what variables do we have in <em><code>africa_covid_cases_long</code></em></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="analysis.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(africa_covid_cases_long)</span></code></pre></div>
+<pre><code>## [1] &quot;ISO&quot;            &quot;COUNTRY_NAME&quot;   &quot;AFRICAN_REGION&quot; &quot;excel_date&quot;    
+## [5] &quot;cases&quot;          &quot;date_format&quot;</code></pre>
+<p>We can select the variables we want to keep using the select function from the dplyr package</p>
+<p><code>dplyr</code> is a core part of the <code>tidyverse</code> so it is loaded when you write <code>library(tidyverse)</code></p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="analysis.html#cb90-1" aria-hidden="true" tabindex="-1"></a>analysis_dataset <span class="ot">&lt;-</span> africa_covid_cases_long <span class="sc">%&gt;%</span> </span>
+<span id="cb90-2"><a href="analysis.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date_format,AFRICAN_REGION, COUNTRY_NAME, cases)</span></code></pre></div>
+<p>We can look at the first few rows of the dataset we have created to check we have selected the desired variables.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="analysis.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(analysis_dataset)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   date_format AFRICAN_REGION  COUNTRY_NAME cases
+##   &lt;date&gt;      &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt;
+## 1 2020-01-01  Northern Africa Algeria          0
+## 2 2020-01-02  Northern Africa Algeria          0
+## 3 2020-01-03  Northern Africa Algeria          0
+## 4 2020-01-04  Northern Africa Algeria          0
+## 5 2020-01-05  Northern Africa Algeria          0
+## 6 2020-01-06  Northern Africa Algeria          0</code></pre>
+<p>The <code>select</code> function from the <code>dplyr</code> package is very useful.</p>
+<p>It can also be used to rename selected variables</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="analysis.html#cb93-1" aria-hidden="true" tabindex="-1"></a>analysis_dataset <span class="ot">&lt;-</span> africa_covid_cases_long <span class="sc">%&gt;%</span> </span>
+<span id="cb93-2"><a href="analysis.html#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">date=</span>date_format,<span class="at">region=</span>AFRICAN_REGION, <span class="at">country=</span>COUNTRY_NAME, cases)</span></code></pre></div>
+<p>We have renamed <code>AFRICAN_REGION</code> and <code>COUNTRY_NAME</code> as <code>region</code> and <code>country</code></p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="analysis.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(analysis_dataset)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   date       region          country cases
+##   &lt;date&gt;     &lt;chr&gt;           &lt;chr&gt;   &lt;dbl&gt;
+## 1 2020-01-01 Northern Africa Algeria     0
+## 2 2020-01-02 Northern Africa Algeria     0
+## 3 2020-01-03 Northern Africa Algeria     0
+## 4 2020-01-04 Northern Africa Algeria     0
+## 5 2020-01-05 Northern Africa Algeria     0
+## 6 2020-01-06 Northern Africa Algeria     0</code></pre>
+</div>
+<div id="answering-questions-with-data" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Answering questions with data</h2>
+<p>The Epidemiologist R handbook has several comprehensive sections focusing on data analysis. We will continue to work with the dataset we have built while applying some of the examples from the handbook.</p>
+<p>So far we have:</p>
+<ul>
+<li><p>Imported the data from an Excel worksheet</p></li>
+<li><p>Reshaped the data into a “tidy” format</p></li>
+<li><p>Changed the format of a variable to a date</p></li>
+<li><p>Selected only the variables we want to use for the analysis</p></li>
+</ul>
+<p>Now we can start to use the dataset to answer questions</p>
+<p>The <code>dplyr</code> package contains many useful functions for analysing data.</p>
+<p>Some of these functions are covered in the Epidemiologist R Handbook - <a href="https://epirhandbook.com/descriptive-tables.html#dplyr-package">Section 17.4</a></p>
+<p>We will use some of these functions to answer questions using our dataset.</p>
+<p><em>How many confirmed cases of COVID-19 have been recorded in Africa?</em></p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="analysis.html#cb96-1" aria-hidden="true" tabindex="-1"></a>analysis_dataset <span class="sc">%&gt;%</span>  <span class="co"># Tell R what dataset we want to use</span></span>
+<span id="cb96-2"><a href="analysis.html#cb96-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">total_covid_cases=</span><span class="fu">sum</span>(cases))  <span class="co">#Tell R what function we want to apply to the data</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   total_covid_cases
+##               &lt;dbl&gt;
+## 1                NA</code></pre>
+<p>The answer is “NA”, which stands for “Not Available”</p>
+<p>This is a good example of how R deals with missing data</p>
+<ul>
+<li><p>There may be dates in our dataset where there were no confirmed cases of COVID-19 recorded</p></li>
+<li><p>When data are missing, R will display “NA” for the variable</p></li>
+<li><p>If you try to run a calculation on data where there is one or more “NA” values, the results will be “NA”</p></li>
+</ul>
+</div>
+<div id="missing-data" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Missing data</h2>
+<p>There are several options for dealing with missing values in R</p>
+<ol style="list-style-type: decimal">
+<li><p>Complete case analysis</p>
+<ul>
+<li>Remove rows with any missing data</li>
+</ul></li>
+</ol>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="analysis.html#cb98-1" aria-hidden="true" tabindex="-1"></a>full_dataset <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(analysis_dataset)</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Exclude “NA” values from calculations</p>
+<ul>
+<li>Add an additional argument to the function to remove “NA”</li>
+</ul></li>
+</ol>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="analysis.html#cb99-1" aria-hidden="true" tabindex="-1"></a>analysis_dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb99-2"><a href="analysis.html#cb99-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">total_covid_cases=</span><span class="fu">sum</span>(cases, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   total_covid_cases
+##               &lt;dbl&gt;
+## 1           4561465</code></pre>
+<p>This command has now excluded NA values and has provided us with an answer for the number of confirmed COVID-19 cases in Africa - 4,561,465</p>
+<p><em>How many confirmed cases of COVID-19 have been recorded in Africa, by region?</em></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="analysis.html#cb101-1" aria-hidden="true" tabindex="-1"></a>analysis_dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb101-2"><a href="analysis.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-3"><a href="analysis.html#cb101-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">total_covid_cases=</span><span class="fu">sum</span>(cases, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   region          total_covid_cases
+##   &lt;chr&gt;                       &lt;dbl&gt;
+## 1 Central Africa             161353
+## 2 Eastern Africa             622537
+## 3 Northern Africa           1371469
+## 4 Southern Africa           1970137
+## 5 Western Africa             435969</code></pre>
+</div>
+<div id="grouping-and-pivoting-data" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Grouping and pivoting data</h2>
+<p><code>group_by</code> is a very powerful function for summarising data.</p>
+<p>The <code>arrange</code> function can be used to organise the results. In this case we have instructed R to sort the results by the <code>total_covid_cases</code> variable, from highest to lowest value.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="analysis.html#cb103-1" aria-hidden="true" tabindex="-1"></a>analysis_dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb103-2"><a href="analysis.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> </span>
+<span id="cb103-3"><a href="analysis.html#cb103-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">total_covid_cases=</span><span class="fu">sum</span>(cases, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb103-4"><a href="analysis.html#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>total_covid_cases)</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   region          total_covid_cases
+##   &lt;chr&gt;                       &lt;dbl&gt;
+## 1 Southern Africa           1970137
+## 2 Northern Africa           1371469
+## 3 Eastern Africa             622537
+## 4 Western Africa             435969
+## 5 Central Africa             161353</code></pre>
+<p>We can add multiple variables to <code>group_by</code></p>
+<p>If we add region and country to the group_by command, sort from highest to lowest, we can see which countries reported the most confirmed COVID-19 cases</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="analysis.html#cb105-1" aria-hidden="true" tabindex="-1"></a>analysis_dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb105-2"><a href="analysis.html#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, country) <span class="sc">%&gt;%</span> </span>
+<span id="cb105-3"><a href="analysis.html#cb105-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">total_covid_cases=</span><span class="fu">sum</span>(cases, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb105-4"><a href="analysis.html#cb105-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>total_covid_cases)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;region&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 53 x 3
+## # Groups:   region [5]
+##    region          country      total_covid_cases
+##    &lt;chr&gt;           &lt;chr&gt;                    &lt;dbl&gt;
+##  1 Southern Africa South Africa           1584064
+##  2 Northern Africa Morocco                 511856
+##  3 Northern Africa Tunisia                 311743
+##  4 Eastern Africa  Ethiopia                258353
+##  5 Northern Africa Egypt                   228584
+##  6 Northern Africa Libya                   178335
+##  7 Western Africa  Nigeria                 165199
+##  8 Eastern Africa  Kenya                   160559
+##  9 Northern Africa Algeria                 122522
+## 10 Western Africa  Ghana                    92683
+## # … with 43 more rows</code></pre>
+</div>
+<div id="filtering-data" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Filtering data</h2>
+<p>Another useful function is <code>filter</code> which can be used to apply filters to calculations</p>
+<p>We can repeat the previous calculation, but then add a filter to only include results from countries in Northern Africa</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="analysis.html#cb108-1" aria-hidden="true" tabindex="-1"></a>analysis_dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb108-2"><a href="analysis.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, country) <span class="sc">%&gt;%</span> </span>
+<span id="cb108-3"><a href="analysis.html#cb108-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">total_covid_cases=</span><span class="fu">sum</span>(cases, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb108-4"><a href="analysis.html#cb108-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>total_covid_cases) <span class="sc">%&gt;%</span> </span>
+<span id="cb108-5"><a href="analysis.html#cb108-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region<span class="sc">==</span><span class="st">&quot;Northern Africa&quot;</span>)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;region&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 6 x 3
+## # Groups:   region [1]
+##   region          country    total_covid_cases
+##   &lt;chr&gt;           &lt;chr&gt;                  &lt;dbl&gt;
+## 1 Northern Africa Morocco               511856
+## 2 Northern Africa Tunisia               311743
+## 3 Northern Africa Egypt                 228584
+## 4 Northern Africa Libya                 178335
+## 5 Northern Africa Algeria               122522
+## 6 Northern Africa Mauritania             18429</code></pre>
+<p>The filter can be applied at any point within the calculation. For very complex calculations, it is helpful to apply the filter as early as possible. This reduces the number of records before the complex portion of the calculation occurs.</p>
+<p><code>filter</code> can also be used to make data frames</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="analysis.html#cb111-1" aria-hidden="true" tabindex="-1"></a>northern_africa <span class="ot">&lt;-</span> analysis_dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb111-2"><a href="analysis.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region<span class="sc">==</span><span class="st">&quot;Northern Africa&quot;</span>)</span></code></pre></div>
+<p>Using filters, we can answer additional questions.</p>
+<p>What percentage of North Africa’s confirmed COVID-19 cases were recorded in each country in North Africa?</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="analysis.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co">#to convert the calculation to percentage we will need to install an additional package</span></span>
+<span id="cb112-2"><a href="analysis.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;scales&quot;)</span></span>
+<span id="cb112-3"><a href="analysis.html#cb112-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-4"><a href="analysis.html#cb112-4" aria-hidden="true" tabindex="-1"></a>northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb112-5"><a href="analysis.html#cb112-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-6"><a href="analysis.html#cb112-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_covid_cases=</span><span class="fu">sum</span>(cases, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-7"><a href="analysis.html#cb112-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percentage=</span>scales<span class="sc">::</span><span class="fu">percent</span>(total_covid_cases<span class="sc">/</span><span class="fu">sum</span>(total_covid_cases))) <span class="sc">%&gt;%</span> </span>
+<span id="cb112-8"><a href="analysis.html#cb112-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#with this mutate command we are telling r to divide the total number of covid cases for each country by the total number of covid cases for all countries in northern africa</span></span>
+<span id="cb112-9"><a href="analysis.html#cb112-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>total_covid_cases)  </span></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   country    total_covid_cases percentage
+##   &lt;chr&gt;                  &lt;dbl&gt; &lt;chr&gt;     
+## 1 Morocco               511856 37.3%     
+## 2 Tunisia               311743 22.7%     
+## 3 Egypt                 228584 16.7%     
+## 4 Libya                 178335 13.0%     
+## 5 Algeria               122522 8.9%      
+## 6 Mauritania             18429 1.3%</code></pre>
+<p>We can store the result as a data frame by assigning the calculation to an object.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="analysis.html#cb114-1" aria-hidden="true" tabindex="-1"></a>northern_africa_cases_country <span class="ot">&lt;-</span> northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb114-2"><a href="analysis.html#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb114-3"><a href="analysis.html#cb114-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total_covid_cases=</span><span class="fu">sum</span>(cases, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb114-4"><a href="analysis.html#cb114-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percentage=</span>scales<span class="sc">::</span><span class="fu">percent</span>(total_covid_cases<span class="sc">/</span><span class="fu">sum</span>(total_covid_cases))) <span class="sc">%&gt;%</span> </span>
+<span id="cb114-5"><a href="analysis.html#cb114-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#with this mutate command we are telling r to divide the total number of covid cases for each country by the total number of covid cases for all countries in northern africa</span></span>
+<span id="cb114-6"><a href="analysis.html#cb114-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>total_covid_cases)  </span></code></pre></div>
+</div>
+<div id="additional-questions-and-workflows" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Additional questions and workflows</h2>
+<p><em>When was the first confirmed case of COVID-19 in Northern Africa?</em></p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="analysis.html#cb115-1" aria-hidden="true" tabindex="-1"></a>northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb115-2"><a href="analysis.html#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cases<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb115-3"><a href="analysis.html#cb115-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">min</span>(date, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) </span></code></pre></div>
+<pre><code>## # A tibble: 1 x 4
+##   date       region          country cases
+##   &lt;date&gt;     &lt;chr&gt;           &lt;chr&gt;   &lt;dbl&gt;
+## 1 2020-02-14 Northern Africa Egypt       1</code></pre>
+<p>Here we have added 2 filters:</p>
+<ol style="list-style-type: decimal">
+<li><p>Only keep records where the value for <code>cases</code> is higher than 0</p></li>
+<li><p>Only keep records where the value for <code>date</code> is equal to the minimum value for <code>date.</code> We have also added the <code>na.rm=TRUE</code> command from a previous step. If you don’t know the data very well, it is good practice to add this command.</p></li>
+</ol>
+<p>When was the first confirmed case of COVID-19 in Northern Africa, by country?</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="analysis.html#cb117-1" aria-hidden="true" tabindex="-1"></a>northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb117-2"><a href="analysis.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb117-3"><a href="analysis.html#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cases<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb117-4"><a href="analysis.html#cb117-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">min</span>(date, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) </span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+## # Groups:   country [6]
+##   date       region          country    cases
+##   &lt;date&gt;     &lt;chr&gt;           &lt;chr&gt;      &lt;dbl&gt;
+## 1 2020-02-25 Northern Africa Algeria        1
+## 2 2020-02-14 Northern Africa Egypt          1
+## 3 2020-03-24 Northern Africa Libya          1
+## 4 2020-03-13 Northern Africa Mauritania     1
+## 5 2020-03-02 Northern Africa Morocco        1
+## 6 2020-03-02 Northern Africa Tunisia        1</code></pre>
+<p>The filter function can also be used to exclude certain records from the analysis</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="analysis.html#cb119-1" aria-hidden="true" tabindex="-1"></a>northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb119-2"><a href="analysis.html#cb119-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb119-3"><a href="analysis.html#cb119-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cases<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb119-4"><a href="analysis.html#cb119-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">min</span>(date, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb119-5"><a href="analysis.html#cb119-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">#filter(!country==&quot;Tunisia&quot;) %&gt;% </span></span>
+<span id="cb119-6"><a href="analysis.html#cb119-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country<span class="sc">!=</span><span class="st">&quot;Tunisia&quot;</span>) <span class="co">#both methods for excluding results (in this case excluding results where the value for country is Tunisia) can be used </span></span></code></pre></div>
+<pre><code>## # A tibble: 5 x 4
+## # Groups:   country [5]
+##   date       region          country    cases
+##   &lt;date&gt;     &lt;chr&gt;           &lt;chr&gt;      &lt;dbl&gt;
+## 1 2020-02-25 Northern Africa Algeria        1
+## 2 2020-02-14 Northern Africa Egypt          1
+## 3 2020-03-24 Northern Africa Libya          1
+## 4 2020-03-13 Northern Africa Mauritania     1
+## 5 2020-03-02 Northern Africa Morocco        1</code></pre>
+<p>These results can be stored in an object for future use</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="analysis.html#cb121-1" aria-hidden="true" tabindex="-1"></a>first_cases_northern_africa <span class="ot">&lt;-</span> northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb121-2"><a href="analysis.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb121-3"><a href="analysis.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cases<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb121-4"><a href="analysis.html#cb121-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">min</span>(date, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) </span></code></pre></div>
+<p>On what date, was the 100th case of COVID-19 reported from each country in Northern Africa?</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="analysis.html#cb122-1" aria-hidden="true" tabindex="-1"></a>northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb122-2"><a href="analysis.html#cb122-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb122-3"><a href="analysis.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumulative_cases=</span><span class="fu">cumsum</span>(cases)) <span class="sc">%&gt;%</span> </span>
+<span id="cb122-4"><a href="analysis.html#cb122-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cumulative_cases<span class="sc">&gt;=</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb122-5"><a href="analysis.html#cb122-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb122-6"><a href="analysis.html#cb122-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(date, country)</span></code></pre></div>
+<pre><code>##      Algeria        Egypt        Libya   Mauritania      Morocco      Tunisia 
+## &quot;2020-03-20&quot; &quot;2020-03-15&quot; &quot;2020-05-28&quot; &quot;2020-05-19&quot; &quot;2020-03-22&quot; &quot;2020-03-24&quot;</code></pre>
+<p>Here we have introduced two new functions <code>slice</code> and <code>pull</code></p>
+<p><code>slice</code> can be used to select specific rows from a dataset. In this case, we have added a column which is the cumulative number of cases, selected the first row after filtering the dataset to only include results where the value is greater than or equal to 100, and then selected the first row using the slice command.</p>
+<p>An additional function is the <code>pull</code> command. This is useful when you want to extract specific values from the result.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="analysis.html#cb124-1" aria-hidden="true" tabindex="-1"></a>first_100cases <span class="ot">&lt;-</span> northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb124-2"><a href="analysis.html#cb124-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb124-3"><a href="analysis.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cumulative_cases=</span><span class="fu">cumsum</span>(cases)) <span class="sc">%&gt;%</span> </span>
+<span id="cb124-4"><a href="analysis.html#cb124-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cumulative_cases<span class="sc">&gt;=</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb124-5"><a href="analysis.html#cb124-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb124-6"><a href="analysis.html#cb124-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(date, country)</span></code></pre></div>
+<div id="moving-averages" class="section level3" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Moving averages</h3>
+<p>The dataset is currently set up so that each row contains information on the number of recorded COVID-19 cases for a specific date for a specified country. One calculation which we may be interested in is the overall trend of case numbers over a period of time. For this, we can calculate cumulative values and averages to identify any trends in the data.</p>
+<p>To demonstrate this, we will filter the dataset to only include 1 country - in this case, Morocco.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="analysis.html#cb125-1" aria-hidden="true" tabindex="-1"></a>morocco_covid_cases <span class="ot">&lt;-</span> northern_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb125-2"><a href="analysis.html#cb125-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">&quot;Morocco&quot;</span>)</span></code></pre></div>
+<p>When data are collected on a daily basis, it can be helpful to apply functions to improve the interpretation of trends which may be present in the data. For example, with this COVID dataset, data are available for 489 days between January 1, 2020 &amp; May 3, 2021. There will be some days when 0 cases are reported and there will be some days when many more cases are reported. Some of these differences may be due to delays in reporting cases if ,for example, reporting does not take place at the weekend.</p>
+<p>There are a number of functions in the <code>zoo</code> package which can help us to partially account for reporting delays.</p>
+<div id="rolling-seven-day-average-mean-of-cases" class="section level4" number="4.7.1.1">
+<h4><span class="header-section-number">4.7.1.1</span> Rolling seven-day average (mean) of cases</h4>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="analysis.html#cb126-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(zoo)</span>
+<span id="cb126-2"><a href="analysis.html#cb126-2" aria-hidden="true" tabindex="-1"></a>morocco_covid_cases_mean <span class="ot">&lt;-</span> morocco_covid_cases <span class="sc">%&gt;%</span> </span>
+<span id="cb126-3"><a href="analysis.html#cb126-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cases_7day_mean=</span><span class="fu">rollmean</span>(cases,<span class="at">k=</span><span class="dv">7</span>, <span class="at">fill=</span><span class="cn">NA</span>))</span></code></pre></div>
+<p>We have now created a new variable which calculates the 7-day moving average of cases. In the visualisation session of this training, we will compare the graphs of cases to the seven-day moving average to show the difference between the two indicators.</p>
+<p>If you wanted to calculate a moving average over a longer time period, you can adjust the number after <code>k=</code></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="analysis.html#cb127-1" aria-hidden="true" tabindex="-1"></a>morocco_covid_cases_mean <span class="ot">&lt;-</span> morocco_covid_cases <span class="sc">%&gt;%</span> </span>
+<span id="cb127-2"><a href="analysis.html#cb127-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cases_7day_mean=</span><span class="fu">rollmean</span>(cases,<span class="at">k=</span><span class="dv">7</span>, <span class="at">fill=</span><span class="cn">NA</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb127-3"><a href="analysis.html#cb127-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cases_14day_mean=</span><span class="fu">rollmean</span>(cases,<span class="at">k=</span><span class="dv">14</span>,<span class="at">fill=</span><span class="cn">NA</span>))</span></code></pre></div>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="management.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="presenting-your-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

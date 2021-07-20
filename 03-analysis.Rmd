@@ -110,7 +110,7 @@ This is a good example of how R deals with missing data
 
 ## Missing data
 
-There are several options for dealing with missing values in R
+There are several options for dealing with missing values in R including imputation and other statistical techniques which will not be discussed here. For this section we will discuss the 2 most straightforward options but when building a graph, table or report it is very important to report how missing data were handled. 
 
 1.  Complete case analysis
 
@@ -122,26 +122,30 @@ full_dataset <- na.omit(analysis_dataset)
 
 2.  Exclude "NA" values from calculations
 
-    -   Add an additional argument to the function to remove "NA"
+    -   Add an additional argument to the function to remove any record with "NA" in the variable "cases"
 
 ```{r}
-analysis_dataset %>% 
+total_covid_cases <- analysis_dataset %>% 
     summarise(total_covid_cases=sum(cases, na.rm=TRUE))
+total_covid_cases
 ```
 
-This command has now excluded NA values and has provided us with an answer for the number of confirmed COVID-19 cases in Africa - 4,561,465
+This command has now excluded NA values and has provided us with an answer for the number of confirmed COVID-19 cases in Africa - `r total_covid_cases`
+
+## Grouping and pivoting data
+
+`group_by` is a very powerful function for summarising data. You can instruct R to recognise specific groups in your data. Functions can then be applied to these groups providing you with additional information. 
+
 
 *How many confirmed cases of COVID-19 have been recorded in Africa, by region?*
 
 ```{r}
-analysis_dataset %>% 
+total_covid_cases_region <- analysis_dataset %>% 
   group_by(region) %>% 
     summarise(total_covid_cases=sum(cases, na.rm=TRUE))
 ```
 
-## Grouping and pivoting data
 
-`group_by` is a very powerful function for summarising data.
 
 The `arrange` function can be used to organise the results. In this case we have instructed R to sort the results by the `total_covid_cases` variable, from highest to lowest value.
 
@@ -216,12 +220,13 @@ northern_africa_cases_country <- northern_africa %>%
 
 ## Additional questions and workflows
 
-*When was the first confirmed case of COVID-19 in Northern Africa?*
+### *When was the first confirmed case of COVID-19 in Northern Africa?*
 
 ```{r}
-northern_africa %>% 
+first_cases_northern_africa <- northern_africa %>% 
   filter(cases>0) %>% 
   filter(date == min(date, na.rm=TRUE)) 
+first_cases_northern_africa
 ```
 
 Here we have added 2 filters:
@@ -233,36 +238,29 @@ Here we have added 2 filters:
 When was the first confirmed case of COVID-19 in Northern Africa, by country?
 
 ```{r}
-northern_africa %>% 
+first_case_northern_africa_country <- northern_africa %>% 
   group_by(country) %>% 
   filter(cases>0) %>% 
   filter(date == min(date, na.rm=TRUE)) 
+first_case_northern_africa_country
 ```
 
 The filter function can also be used to exclude certain records from the analysis
 
 ```{r}
-northern_africa %>% 
+first_case_northern_africa_country_exclude_tunisia <- northern_africa %>% 
   group_by(country) %>% 
   filter(cases>0) %>% 
   filter(date == min(date, na.rm=TRUE)) %>% 
   #filter(!country=="Tunisia") %>% 
   filter(country!="Tunisia") #both methods for excluding results (in this case excluding results where the value for country is Tunisia) can be used 
-```
-
-These results can be stored in an object for future use
-
-```{r}
-first_cases_northern_africa <- northern_africa %>% 
-  group_by(country) %>% 
-  filter(cases>0) %>% 
-  filter(date == min(date, na.rm=TRUE)) 
+first_case_northern_africa_country_exclude_tunisia
 ```
 
 On what date, was the 100th case of COVID-19 reported from each country in Northern Africa?
 
 ```{r}
-northern_africa %>% 
+first_cases_northern_africa_data <- northern_africa %>% 
   group_by(country) %>% 
   mutate(cumulative_cases=cumsum(cases)) %>% 
   filter(cumulative_cases>=100) %>% 
@@ -284,6 +282,29 @@ first_100cases <- northern_africa %>%
   slice(1) %>% 
   pull(date, country)
 ```
+
+### Using the results in RMarkdown
+
+RStudio has a powerful tool for writing documents called RMarkdown. These slides were written in RMarkdown and there are many resources online built using the same approach.
+
+One major benefit of RMarkdown is that is an excellent tool for reproducible research
+
+[![](images/Screenshot%202021-07-20%20at%2013.29.38.png){width="450"}](https://www.researchgate.net/publication/306538473_Advantages_and_Limits_in_the_Adoption_of_Reproducible_Research_and_R-Tools_for_the_Analysis_of_Omic_Data/figures?lo=1)
+
+RMarkdown will not be covered during this training but there are excellent resources online providing walkthrough guides.
+
+Here is one example:
+
+If we write this text 
+```{r eval=FALSE, echo=TRUE}
+The first COVID-19 case recorded in Northern Africa was in `r first_cases_northern_africa %>% pull(country)` on `r first_cases_northern_africa %>% pull(date)`.
+```
+
+it will work through the functions and this is the result
+
+The first COVID-19 case recorded in Northern Africa was in `r first_cases_northern_africa %>% pull(country)` on `r first_cases_northern_africa %>% pull(date)`.
+
+If you were to re-run the report with data from eastern Africa, the figures will update based on the funcitons you have instructed R to do. This is very helpful when there are multiple people working on a report which needs to be run at regular intervals. 
 
 ### Moving averages
 
@@ -317,3 +338,7 @@ morocco_covid_cases_mean <- morocco_covid_cases %>%
   mutate(cases_7day_mean=rollmean(cases,k=7, fill=NA)) %>% 
   mutate(cases_14day_mean=rollmean(cases,k=14,fill=NA))
 ```
+
+## Useful resources
+
+[Reproducible research in R](https://monashdatafluency.github.io/r-rep-res/)

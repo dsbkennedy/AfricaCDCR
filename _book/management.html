@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Management | R Training Manual</title>
+  <meta name="description" content="3 Management | R Training Manual" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Management | R Training Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Management | R Training Manual" />
+  
+  
+  
+
+<meta name="author" content="UK Public Health Rapid Support Team" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="session-1-introduction-to-r.html"/>
+<link rel="next" href="analysis.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Session 1: Introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#course-structure"><i class="fa fa-check"></i><b>2.1</b> Course structure</a></li>
+<li class="chapter" data-level="2.2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#why-r"><i class="fa fa-check"></i><b>2.2</b> Why R?</a></li>
+<li class="chapter" data-level="2.3" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#installing-r"><i class="fa fa-check"></i><b>2.3</b> Installing R</a></li>
+<li class="chapter" data-level="2.4" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#setting-up-files-and-folders"><i class="fa fa-check"></i><b>2.4</b> Setting up files and folders</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#best-practice"><i class="fa fa-check"></i><b>2.4.1</b> Best practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#navigating-in-r-studio"><i class="fa fa-check"></i><b>2.5</b> Navigating in R studio</a></li>
+<li class="chapter" data-level="2.6" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#r-packages"><i class="fa fa-check"></i><b>2.6</b> R packages</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#what-is-an-r-package"><i class="fa fa-check"></i><b>2.6.1</b> What is an R package?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#installing-a-package"><i class="fa fa-check"></i><b>2.6.2</b> Installing a package</a></li>
+<li class="chapter" data-level="2.6.3" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#loading-a-package"><i class="fa fa-check"></i><b>2.6.3</b> Loading a package</a></li>
+<li class="chapter" data-level="2.6.4" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#using-a-package"><i class="fa fa-check"></i><b>2.6.4</b> Using a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#objects"><i class="fa fa-check"></i><b>2.7</b> Objects</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#in-r-everything-is-an-object"><i class="fa fa-check"></i><b>2.7.1</b> In R, everything is an object</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#importing-data"><i class="fa fa-check"></i><b>2.8</b> Importing data</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#assigning-data-to-an-object"><i class="fa fa-check"></i><b>2.8.1</b> Assigning data to an object</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#exporting-data"><i class="fa fa-check"></i><b>2.9</b> Exporting data</a></li>
+<li class="chapter" data-level="2.10" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#exercises"><i class="fa fa-check"></i><b>2.10</b> Exercises</a></li>
+<li class="chapter" data-level="2.11" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#useful-resources"><i class="fa fa-check"></i><b>2.11</b> Useful resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="management.html"><a href="management.html"><i class="fa fa-check"></i><b>3</b> Management</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="management.html"><a href="management.html#data-types"><i class="fa fa-check"></i><b>3.1</b> Data types</a></li>
+<li class="chapter" data-level="3.2" data-path="management.html"><a href="management.html#working-with-data"><i class="fa fa-check"></i><b>3.2</b> Working with data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="management.html"><a href="management.html#looking-at-your-data"><i class="fa fa-check"></i><b>3.2.1</b> Looking at your data</a></li>
+<li class="chapter" data-level="3.2.2" data-path="management.html"><a href="management.html#looking-at-one-variable"><i class="fa fa-check"></i><b>3.2.2</b> Looking at one variable</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="management.html"><a href="management.html#the-tidyverse"><i class="fa fa-check"></i><b>3.3</b> The tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="management.html"><a href="management.html#tidy-data"><i class="fa fa-check"></i><b>3.3.1</b> Tidy data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="management.html"><a href="management.html#checking-if-data-are-tidy"><i class="fa fa-check"></i><b>3.3.2</b> Checking if data are tidy</a></li>
+<li class="chapter" data-level="3.3.3" data-path="management.html"><a href="management.html#tidying-data"><i class="fa fa-check"></i><b>3.3.3</b> Tidying data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="management.html"><a href="management.html#wide-to-long"><i class="fa fa-check"></i><b>3.3.4</b> Wide to long</a></li>
+<li class="chapter" data-level="3.3.5" data-path="management.html"><a href="management.html#piping"><i class="fa fa-check"></i><b>3.3.5</b> Piping</a></li>
+<li class="chapter" data-level="3.3.6" data-path="management.html"><a href="management.html#merging"><i class="fa fa-check"></i><b>3.3.6</b> Merging</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="management.html"><a href="management.html#working-with-dates"><i class="fa fa-check"></i><b>3.4</b> Working with dates</a></li>
+<li class="chapter" data-level="3.5" data-path="management.html"><a href="management.html#useful-resource"><i class="fa fa-check"></i><b>3.5</b> Useful resource</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="analysis.html"><a href="analysis.html"><i class="fa fa-check"></i><b>4</b> Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="analysis.html"><a href="analysis.html#looking-at-your-data-1"><i class="fa fa-check"></i><b>4.1</b> Looking at your data</a></li>
+<li class="chapter" data-level="4.2" data-path="analysis.html"><a href="analysis.html#building-an-analysis-dataset"><i class="fa fa-check"></i><b>4.2</b> Building an analysis dataset</a></li>
+<li class="chapter" data-level="4.3" data-path="analysis.html"><a href="analysis.html#answering-questions-with-data"><i class="fa fa-check"></i><b>4.3</b> Answering questions with data</a></li>
+<li class="chapter" data-level="4.4" data-path="analysis.html"><a href="analysis.html#missing-data"><i class="fa fa-check"></i><b>4.4</b> Missing data</a></li>
+<li class="chapter" data-level="4.5" data-path="analysis.html"><a href="analysis.html#grouping-and-pivoting-data"><i class="fa fa-check"></i><b>4.5</b> Grouping and pivoting data</a></li>
+<li class="chapter" data-level="4.6" data-path="analysis.html"><a href="analysis.html#filtering-data"><i class="fa fa-check"></i><b>4.6</b> Filtering data</a></li>
+<li class="chapter" data-level="4.7" data-path="analysis.html"><a href="analysis.html#additional-questions-and-workflows"><i class="fa fa-check"></i><b>4.7</b> Additional questions and workflows</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="analysis.html"><a href="analysis.html#moving-averages"><i class="fa fa-check"></i><b>4.7.1</b> Moving averages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="presenting-your-data.html"><a href="presenting-your-data.html"><i class="fa fa-check"></i><b>5</b> Presenting your data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="presenting-your-data.html"><a href="presenting-your-data.html#presenting-your-results-in-a-table"><i class="fa fa-check"></i><b>5.1</b> Presenting your results in a table</a></li>
+<li class="chapter" data-level="5.2" data-path="presenting-your-data.html"><a href="presenting-your-data.html#visualising-data-using-ggplot"><i class="fa fa-check"></i><b>5.2</b> Visualising data using ggplot</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="presenting-your-data.html"><a href="presenting-your-data.html#epicurves"><i class="fa fa-check"></i><b>5.2.1</b> Epicurves</a></li>
+<li class="chapter" data-level="5.2.2" data-path="presenting-your-data.html"><a href="presenting-your-data.html#visualising-moving-average-data"><i class="fa fa-check"></i><b>5.2.2</b> Visualising moving average data</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="presenting-your-data.html"><a href="presenting-your-data.html#useful-resources-1"><i class="fa fa-check"></i><b>5.3</b> Useful resources</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Training Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="management" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Management</h1>
+<ul>
+<li><p>Data types</p></li>
+<li><p>Working with data</p></li>
+<li><p>Dates</p></li>
+<li><p>Pivoting and grouping data</p></li>
+<li><p>Removing duplicates</p></li>
+<li><p>Best practice in coding</p></li>
+</ul>
+<div id="data-types" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Data types</h2>
+<p>A key concept which is helpful to understand when you are learning R is that variables in R can be classified as a number of “types”. The various “types” dictate which functions you can apply to your date. For example, if you had a dataset with the names and telephone numbers of all learners on this course, the variable with the name will be a different type to the variable containing the telephone number.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="management.html#cb25-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&quot;Dave&quot;</span></span>
+<span id="cb25-2"><a href="management.html#cb25-2" aria-hidden="true" tabindex="-1"></a>number <span class="ot">&lt;-</span> <span class="dv">1234</span></span>
+<span id="cb25-3"><a href="management.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the data type using the function called class</span></span>
+<span id="cb25-4"><a href="management.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(name)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="management.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(number)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>For a more realistic example, we can look at the africa_covid_cases object which has been assigned to the Excel file we used in Session 1. To look at the data type for a whole data frame, we use the function str</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="management.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(africa_covid_cases)</span></code></pre></div>
+<pre><code>## tibble [53 × 492] (S3: tbl_df/tbl/data.frame)
+##  $ ISO           : chr [1:53] &quot;DZA&quot; &quot;AGO&quot; &quot;BEN&quot; &quot;BWA&quot; ...
+##  $ COUNTRY_NAME  : chr [1:53] &quot;Algeria&quot; &quot;Angola&quot; &quot;Benin&quot; &quot;Botswana&quot; ...
+##  $ AFRICAN_REGION: chr [1:53] &quot;Northern Africa&quot; &quot;Southern Africa&quot; &quot;Western Africa&quot; &quot;Southern Africa&quot; ...
+##  $ 43831         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43832         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43833         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43834         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43835         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43836         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43837         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43838         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43839         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43840         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43841         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43842         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43843         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43844         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43845         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43846         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43847         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43848         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43849         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43850         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43851         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43852         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43853         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43854         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43855         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43856         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43857         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43858         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43859         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43860         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43861         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43862         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43863         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43864         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43865         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43866         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43867         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43868         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43869         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43870         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43871         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43872         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43873         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43874         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43875         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43876         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43877         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43878         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43879         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43880         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43881         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43882         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43883         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43884         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43885         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43886         : num [1:53] 1 0 0 0 0 0 0 0 0 0 ...
+##  $ 43887         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43888         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43889         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43890         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43891         : num [1:53] 2 0 0 0 0 0 0 0 0 0 ...
+##  $ 43892         : num [1:53] 2 0 0 0 0 0 0 0 0 0 ...
+##  $ 43893         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43894         : num [1:53] 7 0 0 0 0 0 0 0 0 0 ...
+##  $ 43895         : num [1:53] 5 0 0 0 0 0 0 0 0 0 ...
+##  $ 43896         : num [1:53] 0 0 0 0 0 0 1 0 0 0 ...
+##  $ 43897         : num [1:53] 2 0 0 0 0 0 0 0 0 0 ...
+##  $ 43898         : num [1:53] 1 0 0 0 0 0 1 0 0 0 ...
+##  $ 43899         : num [1:53] 0 0 0 0 2 0 0 0 0 0 ...
+##  $ 43900         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43901         : num [1:53] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ 43902         : num [1:53] 5 0 0 0 0 0 0 0 0 0 ...
+##  $ 43903         : num [1:53] 1 0 0 0 1 0 0 0 0 0 ...
+##  $ 43904         : num [1:53] 11 0 0 0 4 0 2 1 0 0 ...
+##  $ 43905         : num [1:53] 17 0 0 0 8 0 1 0 0 0 ...
+##  $ 43906         : num [1:53] 0 0 1 0 5 0 0 0 0 0 ...
+##  $ 43907         : num [1:53] 6 0 1 0 7 0 5 0 0 0 ...
+##  $ 43908         : num [1:53] 12 0 0 0 6 0 0 0 0 0 ...
+##  $ 43909         : num [1:53] 18 0 0 0 7 0 0 2 1 0 ...
+##  $ 43910         : num [1:53] 12 0 0 0 24 0 17 0 0 0 ...
+##  $ 43911         : num [1:53] 37 2 0 0 11 0 13 0 0 0 ...
+##  $ 43912         : num [1:53] 62 0 3 0 24 0 0 1 0 0 ...
+##  $ 43913         : num [1:53] 29 1 0 0 15 0 16 0 0 0 ...
+##  $ 43914         : num [1:53] 34 0 0 0 32 0 10 1 2 0 ...
+##  $ 43915         : num [1:53] 38 0 0 0 6 0 0 0 0 0 ...
+##  $ 43916         : num [1:53] 65 1 0 0 28 0 22 0 2 0 ...
+##  $ 43917         : num [1:53] 42 0 0 0 27 0 4 1 0 0 ...
+##  $ 43918         : num [1:53] 45 1 1 0 15 0 7 0 0 0 ...
+##  $ 43919         : num [1:53] 57 2 0 0 24 0 40 0 0 0 ...
+##  $ 43920         : num [1:53] 73 0 0 3 15 0 3 0 2 0 ...
+##  $ 43921         : num [1:53] 132 0 0 1 21 2 51 0 0 0 ...
+##  $ 43922         : num [1:53] 131 0 7 0 6 0 40 2 0 0 ...
+##  $ 43923         : num [1:53] 139 1 0 0 14 1 73 1 0 0 ...
+##  $ 43924         : num [1:53] 185 0 3 0 16 0 203 0 0 0 ...
+##  $ 43925         : num [1:53] 80 2 0 0 27 0 0 0 0 0 ...
+##  $ 43926         : num [1:53] 69 4 6 2 19 0 141 0 0 0 ...
+##   [list output truncated]</code></pre>
+<p>The first 3 columns are of the class “chr” which is short for character. These are often known as “strings”. The remaining variables we can see are are of the class “num” which means that R has identified these variables as numbers.</p>
+<p>Depending on the data type we can apply different functions. For example, we can get the average of the first numeric column by typing</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="management.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(africa_covid_cases<span class="sc">$</span><span class="st">`</span><span class="at">43831</span><span class="st">`</span>)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>But we can’t get the mean value of the character columns because they do not contain data which has been identified by R as a number.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="management.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(africa_covid_cases<span class="sc">$</span>ISO)</span></code></pre></div>
+<pre><code>## Warning in mean.default(africa_covid_cases$ISO): argument is not numeric or
+## logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+</div>
+<div id="working-with-data" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Working with data</h2>
+<p>In the <code>africa_covid_cases</code> object, there are 53 obs (observations) of 492 variables.</p>
+<p>So what does this mean?</p>
+<p>We can look at our data to get more information</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="management.html#cb36-1" aria-hidden="true" tabindex="-1"></a>africa_covid_cases</span></code></pre></div>
+<pre><code>## # A tibble: 53 x 492
+##    ISO   COUNTRY_NAME     AFRICAN_REGION `43831` `43832` `43833` `43834` `43835`
+##    &lt;chr&gt; &lt;chr&gt;            &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 DZA   Algeria          Northern Afri…       0       0       0       0       0
+##  2 AGO   Angola           Southern Afri…       0       0       0       0       0
+##  3 BEN   Benin            Western Africa       0       0       0       0       0
+##  4 BWA   Botswana         Southern Afri…       0       0       0       0       0
+##  5 BFA   Burkina Faso     Western Africa       0       0       0       0       0
+##  6 BDI   Burundi          Central Africa       0       0       0       0       0
+##  7 CMR   Cameroon         Central Africa       0       0       0       0       0
+##  8 CAR   Central African… Central Africa       0       0       0       0       0
+##  9 TCD   Chad             Central Africa       0       0       0       0       0
+## 10 COM   Comoros          Eastern Africa       0       0       0       0       0
+## # … with 43 more rows, and 484 more variables: 43836 &lt;dbl&gt;, 43837 &lt;dbl&gt;,
+## #   43838 &lt;dbl&gt;, 43839 &lt;dbl&gt;, 43840 &lt;dbl&gt;, 43841 &lt;dbl&gt;, 43842 &lt;dbl&gt;,
+## #   43843 &lt;dbl&gt;, 43844 &lt;dbl&gt;, 43845 &lt;dbl&gt;, 43846 &lt;dbl&gt;, 43847 &lt;dbl&gt;,
+## #   43848 &lt;dbl&gt;, 43849 &lt;dbl&gt;, 43850 &lt;dbl&gt;, 43851 &lt;dbl&gt;, 43852 &lt;dbl&gt;,
+## #   43853 &lt;dbl&gt;, 43854 &lt;dbl&gt;, 43855 &lt;dbl&gt;, 43856 &lt;dbl&gt;, 43857 &lt;dbl&gt;,
+## #   43858 &lt;dbl&gt;, 43859 &lt;dbl&gt;, 43860 &lt;dbl&gt;, 43861 &lt;dbl&gt;, 43862 &lt;dbl&gt;,
+## #   43863 &lt;dbl&gt;, 43864 &lt;dbl&gt;, 43865 &lt;dbl&gt;, 43866 &lt;dbl&gt;, 43867 &lt;dbl&gt;,
+## #   43868 &lt;dbl&gt;, 43869 &lt;dbl&gt;, 43870 &lt;dbl&gt;, 43871 &lt;dbl&gt;, 43872 &lt;dbl&gt;,
+## #   43873 &lt;dbl&gt;, 43874 &lt;dbl&gt;, 43875 &lt;dbl&gt;, 43876 &lt;dbl&gt;, 43877 &lt;dbl&gt;,
+## #   43878 &lt;dbl&gt;, 43879 &lt;dbl&gt;, 43880 &lt;dbl&gt;, 43881 &lt;dbl&gt;, 43882 &lt;dbl&gt;,
+## #   43883 &lt;dbl&gt;, 43884 &lt;dbl&gt;, 43885 &lt;dbl&gt;, 43886 &lt;dbl&gt;, 43887 &lt;dbl&gt;,
+## #   43888 &lt;dbl&gt;, 43889 &lt;dbl&gt;, 43890 &lt;dbl&gt;, 43891 &lt;dbl&gt;, 43892 &lt;dbl&gt;,
+## #   43893 &lt;dbl&gt;, 43894 &lt;dbl&gt;, 43895 &lt;dbl&gt;, 43896 &lt;dbl&gt;, 43897 &lt;dbl&gt;,
+## #   43898 &lt;dbl&gt;, 43899 &lt;dbl&gt;, 43900 &lt;dbl&gt;, 43901 &lt;dbl&gt;, 43902 &lt;dbl&gt;,
+## #   43903 &lt;dbl&gt;, 43904 &lt;dbl&gt;, 43905 &lt;dbl&gt;, 43906 &lt;dbl&gt;, 43907 &lt;dbl&gt;,
+## #   43908 &lt;dbl&gt;, 43909 &lt;dbl&gt;, 43910 &lt;dbl&gt;, 43911 &lt;dbl&gt;, 43912 &lt;dbl&gt;,
+## #   43913 &lt;dbl&gt;, 43914 &lt;dbl&gt;, 43915 &lt;dbl&gt;, 43916 &lt;dbl&gt;, 43917 &lt;dbl&gt;,
+## #   43918 &lt;dbl&gt;, 43919 &lt;dbl&gt;, 43920 &lt;dbl&gt;, 43921 &lt;dbl&gt;, 43922 &lt;dbl&gt;,
+## #   43923 &lt;dbl&gt;, 43924 &lt;dbl&gt;, 43925 &lt;dbl&gt;, 43926 &lt;dbl&gt;, 43927 &lt;dbl&gt;,
+## #   43928 &lt;dbl&gt;, 43929 &lt;dbl&gt;, 43930 &lt;dbl&gt;, 43931 &lt;dbl&gt;, 43932 &lt;dbl&gt;,
+## #   43933 &lt;dbl&gt;, 43934 &lt;dbl&gt;, 43935 &lt;dbl&gt;, …</code></pre>
+<p>ISO - 3 letter code assigned to each country</p>
+<p>COUNTRY_NAME - Name of the country</p>
+<p>AFRICAN_REGION - African region</p>
+<p>43831, 43832, 43833 - This looks like a date format used by Excel. It is the number of days since January 1, 1970.</p>
+<div id="looking-at-your-data" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Looking at your data</h3>
+<p><em>Show the first 5 rows of the data frame</em></p>
+<p>The function <code>head</code> tells R that we want to see the first few rows and <code>n=</code> specifies how many rows we want to see.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="management.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(africa_covid_cases, <span class="at">n=</span><span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 492
+##   ISO   COUNTRY_NAME AFRICAN_REGION  `43831` `43832` `43833` `43834` `43835`
+##   &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 DZA   Algeria      Northern Africa       0       0       0       0       0
+## 2 AGO   Angola       Southern Africa       0       0       0       0       0
+## 3 BEN   Benin        Western Africa        0       0       0       0       0
+## 4 BWA   Botswana     Southern Africa       0       0       0       0       0
+## 5 BFA   Burkina Faso Western Africa        0       0       0       0       0
+## # … with 484 more variables: 43836 &lt;dbl&gt;, 43837 &lt;dbl&gt;, 43838 &lt;dbl&gt;,
+## #   43839 &lt;dbl&gt;, 43840 &lt;dbl&gt;, 43841 &lt;dbl&gt;, 43842 &lt;dbl&gt;, 43843 &lt;dbl&gt;,
+## #   43844 &lt;dbl&gt;, 43845 &lt;dbl&gt;, 43846 &lt;dbl&gt;, 43847 &lt;dbl&gt;, 43848 &lt;dbl&gt;,
+## #   43849 &lt;dbl&gt;, 43850 &lt;dbl&gt;, 43851 &lt;dbl&gt;, 43852 &lt;dbl&gt;, 43853 &lt;dbl&gt;,
+## #   43854 &lt;dbl&gt;, 43855 &lt;dbl&gt;, 43856 &lt;dbl&gt;, 43857 &lt;dbl&gt;, 43858 &lt;dbl&gt;,
+## #   43859 &lt;dbl&gt;, 43860 &lt;dbl&gt;, 43861 &lt;dbl&gt;, 43862 &lt;dbl&gt;, 43863 &lt;dbl&gt;,
+## #   43864 &lt;dbl&gt;, 43865 &lt;dbl&gt;, 43866 &lt;dbl&gt;, 43867 &lt;dbl&gt;, 43868 &lt;dbl&gt;,
+## #   43869 &lt;dbl&gt;, 43870 &lt;dbl&gt;, 43871 &lt;dbl&gt;, 43872 &lt;dbl&gt;, 43873 &lt;dbl&gt;,
+## #   43874 &lt;dbl&gt;, 43875 &lt;dbl&gt;, 43876 &lt;dbl&gt;, 43877 &lt;dbl&gt;, 43878 &lt;dbl&gt;,
+## #   43879 &lt;dbl&gt;, 43880 &lt;dbl&gt;, 43881 &lt;dbl&gt;, 43882 &lt;dbl&gt;, 43883 &lt;dbl&gt;,
+## #   43884 &lt;dbl&gt;, 43885 &lt;dbl&gt;, 43886 &lt;dbl&gt;, 43887 &lt;dbl&gt;, 43888 &lt;dbl&gt;,
+## #   43889 &lt;dbl&gt;, 43890 &lt;dbl&gt;, 43891 &lt;dbl&gt;, 43892 &lt;dbl&gt;, 43893 &lt;dbl&gt;,
+## #   43894 &lt;dbl&gt;, 43895 &lt;dbl&gt;, 43896 &lt;dbl&gt;, 43897 &lt;dbl&gt;, 43898 &lt;dbl&gt;,
+## #   43899 &lt;dbl&gt;, 43900 &lt;dbl&gt;, 43901 &lt;dbl&gt;, 43902 &lt;dbl&gt;, 43903 &lt;dbl&gt;,
+## #   43904 &lt;dbl&gt;, 43905 &lt;dbl&gt;, 43906 &lt;dbl&gt;, 43907 &lt;dbl&gt;, 43908 &lt;dbl&gt;,
+## #   43909 &lt;dbl&gt;, 43910 &lt;dbl&gt;, 43911 &lt;dbl&gt;, 43912 &lt;dbl&gt;, 43913 &lt;dbl&gt;,
+## #   43914 &lt;dbl&gt;, 43915 &lt;dbl&gt;, 43916 &lt;dbl&gt;, 43917 &lt;dbl&gt;, 43918 &lt;dbl&gt;,
+## #   43919 &lt;dbl&gt;, 43920 &lt;dbl&gt;, 43921 &lt;dbl&gt;, 43922 &lt;dbl&gt;, 43923 &lt;dbl&gt;,
+## #   43924 &lt;dbl&gt;, 43925 &lt;dbl&gt;, 43926 &lt;dbl&gt;, 43927 &lt;dbl&gt;, 43928 &lt;dbl&gt;,
+## #   43929 &lt;dbl&gt;, 43930 &lt;dbl&gt;, 43931 &lt;dbl&gt;, 43932 &lt;dbl&gt;, 43933 &lt;dbl&gt;,
+## #   43934 &lt;dbl&gt;, 43935 &lt;dbl&gt;, …</code></pre>
+<p>Show the last 7 rows</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="management.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(africa_covid_cases, <span class="at">n=</span><span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 7 x 492
+##   ISO   COUNTRY_NAME AFRICAN_REGION  `43831` `43832` `43833` `43834` `43835`
+##   &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 SDN   Sudan        Eastern Africa        0       0       0       0       0
+## 2 TZA   Tanzania     Eastern Africa        0       0       0       0       0
+## 3 TGO   Togo         Western Africa        0       0       0       0       0
+## 4 TUN   Tunisia      Northern Africa       0       0       0       0       0
+## 5 UGA   Uganda       Eastern Africa        0       0       0       0       0
+## 6 ZMB   Zambia       Southern Africa       0       0       0       0       0
+## 7 ZWE   Zimbabwe     Southern Africa       0       0       0       0       0
+## # … with 484 more variables: 43836 &lt;dbl&gt;, 43837 &lt;dbl&gt;, 43838 &lt;dbl&gt;,
+## #   43839 &lt;dbl&gt;, 43840 &lt;dbl&gt;, 43841 &lt;dbl&gt;, 43842 &lt;dbl&gt;, 43843 &lt;dbl&gt;,
+## #   43844 &lt;dbl&gt;, 43845 &lt;dbl&gt;, 43846 &lt;dbl&gt;, 43847 &lt;dbl&gt;, 43848 &lt;dbl&gt;,
+## #   43849 &lt;dbl&gt;, 43850 &lt;dbl&gt;, 43851 &lt;dbl&gt;, 43852 &lt;dbl&gt;, 43853 &lt;dbl&gt;,
+## #   43854 &lt;dbl&gt;, 43855 &lt;dbl&gt;, 43856 &lt;dbl&gt;, 43857 &lt;dbl&gt;, 43858 &lt;dbl&gt;,
+## #   43859 &lt;dbl&gt;, 43860 &lt;dbl&gt;, 43861 &lt;dbl&gt;, 43862 &lt;dbl&gt;, 43863 &lt;dbl&gt;,
+## #   43864 &lt;dbl&gt;, 43865 &lt;dbl&gt;, 43866 &lt;dbl&gt;, 43867 &lt;dbl&gt;, 43868 &lt;dbl&gt;,
+## #   43869 &lt;dbl&gt;, 43870 &lt;dbl&gt;, 43871 &lt;dbl&gt;, 43872 &lt;dbl&gt;, 43873 &lt;dbl&gt;,
+## #   43874 &lt;dbl&gt;, 43875 &lt;dbl&gt;, 43876 &lt;dbl&gt;, 43877 &lt;dbl&gt;, 43878 &lt;dbl&gt;,
+## #   43879 &lt;dbl&gt;, 43880 &lt;dbl&gt;, 43881 &lt;dbl&gt;, 43882 &lt;dbl&gt;, 43883 &lt;dbl&gt;,
+## #   43884 &lt;dbl&gt;, 43885 &lt;dbl&gt;, 43886 &lt;dbl&gt;, 43887 &lt;dbl&gt;, 43888 &lt;dbl&gt;,
+## #   43889 &lt;dbl&gt;, 43890 &lt;dbl&gt;, 43891 &lt;dbl&gt;, 43892 &lt;dbl&gt;, 43893 &lt;dbl&gt;,
+## #   43894 &lt;dbl&gt;, 43895 &lt;dbl&gt;, 43896 &lt;dbl&gt;, 43897 &lt;dbl&gt;, 43898 &lt;dbl&gt;,
+## #   43899 &lt;dbl&gt;, 43900 &lt;dbl&gt;, 43901 &lt;dbl&gt;, 43902 &lt;dbl&gt;, 43903 &lt;dbl&gt;,
+## #   43904 &lt;dbl&gt;, 43905 &lt;dbl&gt;, 43906 &lt;dbl&gt;, 43907 &lt;dbl&gt;, 43908 &lt;dbl&gt;,
+## #   43909 &lt;dbl&gt;, 43910 &lt;dbl&gt;, 43911 &lt;dbl&gt;, 43912 &lt;dbl&gt;, 43913 &lt;dbl&gt;,
+## #   43914 &lt;dbl&gt;, 43915 &lt;dbl&gt;, 43916 &lt;dbl&gt;, 43917 &lt;dbl&gt;, 43918 &lt;dbl&gt;,
+## #   43919 &lt;dbl&gt;, 43920 &lt;dbl&gt;, 43921 &lt;dbl&gt;, 43922 &lt;dbl&gt;, 43923 &lt;dbl&gt;,
+## #   43924 &lt;dbl&gt;, 43925 &lt;dbl&gt;, 43926 &lt;dbl&gt;, 43927 &lt;dbl&gt;, 43928 &lt;dbl&gt;,
+## #   43929 &lt;dbl&gt;, 43930 &lt;dbl&gt;, 43931 &lt;dbl&gt;, 43932 &lt;dbl&gt;, 43933 &lt;dbl&gt;,
+## #   43934 &lt;dbl&gt;, 43935 &lt;dbl&gt;, …</code></pre>
+<p>How many unique countries are in the data?</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="management.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(africa_covid_cases<span class="sc">$</span>COUNTRY_NAME)</span></code></pre></div>
+<pre><code>##  [1] &quot;Algeria&quot;                          &quot;Angola&quot;                          
+##  [3] &quot;Benin&quot;                            &quot;Botswana&quot;                        
+##  [5] &quot;Burkina Faso&quot;                     &quot;Burundi&quot;                         
+##  [7] &quot;Cameroon&quot;                         &quot;Central African Republic&quot;        
+##  [9] &quot;Chad&quot;                             &quot;Comoros&quot;                         
+## [11] &quot;Congo&quot;                            &quot;Cote d&#39;Ivoire&quot;                   
+## [13] &quot;Democratic Republic of the Congo&quot; &quot;Djibouti&quot;                        
+## [15] &quot;Egypt&quot;                            &quot;Equatorial Guinea&quot;               
+## [17] &quot;Eritrea&quot;                          &quot;Eswatini&quot;                        
+## [19] &quot;Ethiopia&quot;                         &quot;Gabon&quot;                           
+## [21] &quot;Gambia&quot;                           &quot;Ghana&quot;                           
+## [23] &quot;Guinea&quot;                           &quot;Guinea-Bissau&quot;                   
+## [25] &quot;Kenya&quot;                            &quot;Lesotho&quot;                         
+## [27] &quot;Liberia&quot;                          &quot;Libya&quot;                           
+## [29] &quot;Madagascar&quot;                       &quot;Malawi&quot;                          
+## [31] &quot;Mali&quot;                             &quot;Mauritania&quot;                      
+## [33] &quot;Mauritius&quot;                        &quot;Mayotte&quot;                         
+## [35] &quot;Morocco&quot;                          &quot;Mozambique&quot;                      
+## [37] &quot;Namibia&quot;                          &quot;Niger&quot;                           
+## [39] &quot;Nigeria&quot;                          &quot;Rwanda&quot;                          
+## [41] &quot;Sao Tome and Principe&quot;            &quot;Senegal&quot;                         
+## [43] &quot;Sierra Leone&quot;                     &quot;Somalia&quot;                         
+## [45] &quot;South Africa&quot;                     &quot;South Sudan&quot;                     
+## [47] &quot;Sudan&quot;                            &quot;Tanzania&quot;                        
+## [49] &quot;Togo&quot;                             &quot;Tunisia&quot;                         
+## [51] &quot;Uganda&quot;                           &quot;Zambia&quot;                          
+## [53] &quot;Zimbabwe&quot;</code></pre>
+<p>There are 53 unique country values. This is helpful as there are also 53 rows so we can say that each row represents a country. We can assign the list of unique countries to an object for future reference</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="management.html#cb44-1" aria-hidden="true" tabindex="-1"></a>country_list <span class="ot">&lt;-</span> <span class="fu">unique</span>(africa_covid_cases<span class="sc">$</span>COUNTRY_NAME)</span></code></pre></div>
+</div>
+<div id="looking-at-one-variable" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Looking at one variable</h3>
+<p>In the previous step, the following command was used</p>
+<p>unique(africa_covid_cases$COUNTRY_NAME)</p>
+<p>What does “$” do in R?</p>
+<p>It allows us to look at a specific variable within the dataset</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="management.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(africa_covid_cases<span class="sc">$</span>AFRICAN_REGION)</span></code></pre></div>
+<pre><code>## [1] &quot;Northern Africa&quot; &quot;Southern Africa&quot; &quot;Western Africa&quot;  &quot;Central Africa&quot; 
+## [5] &quot;Eastern Africa&quot;</code></pre>
+<p>And again we can assign this to an object</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="management.html#cb47-1" aria-hidden="true" tabindex="-1"></a>region_list <span class="ot">&lt;-</span> <span class="fu">unique</span>(africa_covid_cases<span class="sc">$</span>AFRICAN_REGION)</span></code></pre></div>
+</div>
+</div>
+<div id="the-tidyverse" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> The tidyverse</h2>
+<p>When using R, there are many approaches you can use to reach the same result.</p>
+<p>There are thousands of packages with many functions and sometimes these packages can overlap.</p>
+<p>This can be confusing when you are starting to learn R.</p>
+<p>There is a collection of packages with many of the most commonly used packages and this is called the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="management.html#cb48-1" aria-hidden="true" tabindex="-1"></a>tidyverse<span class="sc">::</span><span class="fu">tidyverse_packages</span>()</span></code></pre></div>
+<pre><code>##  [1] &quot;broom&quot;         &quot;cli&quot;           &quot;crayon&quot;        &quot;dbplyr&quot;       
+##  [5] &quot;dplyr&quot;         &quot;dtplyr&quot;        &quot;forcats&quot;       &quot;googledrive&quot;  
+##  [9] &quot;googlesheets4&quot; &quot;ggplot2&quot;       &quot;haven&quot;         &quot;hms&quot;          
+## [13] &quot;httr&quot;          &quot;jsonlite&quot;      &quot;lubridate&quot;     &quot;magrittr&quot;     
+## [17] &quot;modelr&quot;        &quot;pillar&quot;        &quot;purrr&quot;         &quot;readr&quot;        
+## [21] &quot;readxl&quot;        &quot;reprex&quot;        &quot;rlang&quot;         &quot;rstudioapi&quot;   
+## [25] &quot;rvest&quot;         &quot;stringr&quot;       &quot;tibble&quot;        &quot;tidyr&quot;        
+## [29] &quot;xml2&quot;          &quot;tidyverse&quot;</code></pre>
+<p>We will use functions from some of these packages over the next few sessions.</p>
+<div id="tidy-data" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Tidy data</h3>
+<p>The key concept when working with packages from the tidyverse is the concept of “tidy data”.</p>
+<p><a href="https://epirhandbook.com/transition-to-r.html?q=tidy#tidy-data">R for Epidemiologist handbook 4.1 From Excel - Tidy data</a></p>
+<p>Principles of “<a href="https://r4ds.had.co.nz/tidy-data.html">tidy data</a>”:</p>
+<ol style="list-style-type: decimal">
+<li>Each variable must have its own column</li>
+<li>Each observation must have its own row</li>
+<li>Each value must have its own cell</li>
+</ol>
+<p>Functions from the tidyverse packages are set up to work with tidy data. If your data are not tidy, then you will have to restructure the data to a tidy format. Restructuring can take a lot of time if the data are stored in Excel spreadsheets with a lot of formatting/merged columns.</p>
+<p><a href="https://www.openscapes.org/blog/2020/10/12/tidy-data/"><img src="images/tidy_messy_data-01.jpg" width="250" alt="Tidy data for efficiency, reproducibility, and collaboration. By Julie Lowndes and Allison Horst." /></a></p>
+</div>
+<div id="checking-if-data-are-tidy" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Checking if data are tidy</h3>
+<p>In a previous step, we imported COVID case data from an Excel spreadsheet.<br />
+But how do we know if the data are “tidy”</p>
+<p>Remember there are 3 principles</p>
+<ol style="list-style-type: decimal">
+<li>Each variable must have its own column</li>
+<li>Each observation must have its own row</li>
+<li>Each value must have its own cell</li>
+</ol>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="management.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(africa_covid_cases, <span class="at">n=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 492
+##   ISO   COUNTRY_NAME AFRICAN_REGION  `43831` `43832` `43833` `43834` `43835`
+##   &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 DZA   Algeria      Northern Africa       0       0       0       0       0
+## 2 AGO   Angola       Southern Africa       0       0       0       0       0
+## 3 BEN   Benin        Western Africa        0       0       0       0       0
+## # … with 484 more variables: 43836 &lt;dbl&gt;, 43837 &lt;dbl&gt;, 43838 &lt;dbl&gt;,
+## #   43839 &lt;dbl&gt;, 43840 &lt;dbl&gt;, 43841 &lt;dbl&gt;, 43842 &lt;dbl&gt;, 43843 &lt;dbl&gt;,
+## #   43844 &lt;dbl&gt;, 43845 &lt;dbl&gt;, 43846 &lt;dbl&gt;, 43847 &lt;dbl&gt;, 43848 &lt;dbl&gt;,
+## #   43849 &lt;dbl&gt;, 43850 &lt;dbl&gt;, 43851 &lt;dbl&gt;, 43852 &lt;dbl&gt;, 43853 &lt;dbl&gt;,
+## #   43854 &lt;dbl&gt;, 43855 &lt;dbl&gt;, 43856 &lt;dbl&gt;, 43857 &lt;dbl&gt;, 43858 &lt;dbl&gt;,
+## #   43859 &lt;dbl&gt;, 43860 &lt;dbl&gt;, 43861 &lt;dbl&gt;, 43862 &lt;dbl&gt;, 43863 &lt;dbl&gt;,
+## #   43864 &lt;dbl&gt;, 43865 &lt;dbl&gt;, 43866 &lt;dbl&gt;, 43867 &lt;dbl&gt;, 43868 &lt;dbl&gt;,
+## #   43869 &lt;dbl&gt;, 43870 &lt;dbl&gt;, 43871 &lt;dbl&gt;, 43872 &lt;dbl&gt;, 43873 &lt;dbl&gt;,
+## #   43874 &lt;dbl&gt;, 43875 &lt;dbl&gt;, 43876 &lt;dbl&gt;, 43877 &lt;dbl&gt;, 43878 &lt;dbl&gt;,
+## #   43879 &lt;dbl&gt;, 43880 &lt;dbl&gt;, 43881 &lt;dbl&gt;, 43882 &lt;dbl&gt;, 43883 &lt;dbl&gt;,
+## #   43884 &lt;dbl&gt;, 43885 &lt;dbl&gt;, 43886 &lt;dbl&gt;, 43887 &lt;dbl&gt;, 43888 &lt;dbl&gt;,
+## #   43889 &lt;dbl&gt;, 43890 &lt;dbl&gt;, 43891 &lt;dbl&gt;, 43892 &lt;dbl&gt;, 43893 &lt;dbl&gt;,
+## #   43894 &lt;dbl&gt;, 43895 &lt;dbl&gt;, 43896 &lt;dbl&gt;, 43897 &lt;dbl&gt;, 43898 &lt;dbl&gt;,
+## #   43899 &lt;dbl&gt;, 43900 &lt;dbl&gt;, 43901 &lt;dbl&gt;, 43902 &lt;dbl&gt;, 43903 &lt;dbl&gt;,
+## #   43904 &lt;dbl&gt;, 43905 &lt;dbl&gt;, 43906 &lt;dbl&gt;, 43907 &lt;dbl&gt;, 43908 &lt;dbl&gt;,
+## #   43909 &lt;dbl&gt;, 43910 &lt;dbl&gt;, 43911 &lt;dbl&gt;, 43912 &lt;dbl&gt;, 43913 &lt;dbl&gt;,
+## #   43914 &lt;dbl&gt;, 43915 &lt;dbl&gt;, 43916 &lt;dbl&gt;, 43917 &lt;dbl&gt;, 43918 &lt;dbl&gt;,
+## #   43919 &lt;dbl&gt;, 43920 &lt;dbl&gt;, 43921 &lt;dbl&gt;, 43922 &lt;dbl&gt;, 43923 &lt;dbl&gt;,
+## #   43924 &lt;dbl&gt;, 43925 &lt;dbl&gt;, 43926 &lt;dbl&gt;, 43927 &lt;dbl&gt;, 43928 &lt;dbl&gt;,
+## #   43929 &lt;dbl&gt;, 43930 &lt;dbl&gt;, 43931 &lt;dbl&gt;, 43932 &lt;dbl&gt;, 43933 &lt;dbl&gt;,
+## #   43934 &lt;dbl&gt;, 43935 &lt;dbl&gt;, …</code></pre>
+<p>So are the data “tidy”?</p>
+<p>The data from the spreadsheet are not “tidy”.</p>
+<p>The columns “43831, 43832, 43833…” represent different dates. Therefore, this does meet the second argument of “tidy data” - “Each observation must have its own row”.But we can reformat the data to make it “tidy” using functions from the packages included in the tidyverse</p>
+<p>Remember, first we must install the packages from the tidyverse</p>
+<p><code>install.packages("tidyverse")</code></p>
+</div>
+<div id="tidying-data" class="section level3" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Tidying data</h3>
+<p>Now that the <code>tidyverse</code> has been installed, we can use the functions from the packages to “tidy” the data.One package which is very helpful for this is called "<code>tidyr</code>. Instead of loading individual packages, we can load the core tidyverse packages with one command</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="management.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.4     ✓ purrr   0.3.4
+## ✓ tibble  3.1.2     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<p>The core packages contain powerful functions we can use to process, analyse and visualise data.</p>
+<p>Remember to look at the documentation for a package type “?[name of package]”</p>
+<p>Example -</p>
+<p><code>?tidyr</code></p>
+<p>To look at the functions within a package, type [name of package]::</p>
+<p>Example</p>
+<p><code>tidyr::</code></p>
+<p>To reformat the data to a tidy format, we need to transform the data from wide to long.</p>
+<p>The Epidemiologist R handbook has an excellent section describing how to do this</p>
+<p>12 - <a href="https://epirhandbook.com/pivoting-data.html?q=pivot_long#pivoting-data">Pivoting data</a></p>
+</div>
+<div id="wide-to-long" class="section level3" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Wide to long</h3>
+<p><a href="https://epirhandbook.com/pivoting-data.html?q=pivot_long#wide-to-long"><img src="images/wide_to_long-01.png" width="600" alt="From the Epidemiologist R handbook" /></a></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="management.html#cb56-1" aria-hidden="true" tabindex="-1"></a>africa_covid_cases_long <span class="ot">&lt;-</span></span>
+<span id="cb56-2"><a href="management.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  africa_covid_cases <span class="sc">%&gt;%</span> <span class="co">#tell R to use this dataset</span></span>
+<span id="cb56-3"><a href="management.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">492</span>,<span class="co">#select the columns you want</span></span>
+<span id="cb56-4"><a href="management.html#cb56-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;excel_date&quot;</span>, <span class="co">#name the new date column</span></span>
+<span id="cb56-5"><a href="management.html#cb56-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;cases&quot;</span>) <span class="co">#name the new cases column</span></span></code></pre></div>
+<p>Transforming data from wide to long usually requires a few attempts to ensure you have achieved the correct outcome!</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="management.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(africa_covid_cases_long, <span class="at">n=</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 5
+##   ISO   COUNTRY_NAME AFRICAN_REGION  excel_date cases
+##   &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;           &lt;chr&gt;      &lt;dbl&gt;
+## 1 DZA   Algeria      Northern Africa 43831          0
+## 2 DZA   Algeria      Northern Africa 43832          0
+## 3 DZA   Algeria      Northern Africa 43833          0</code></pre>
+<p>This looks correct!</p>
+</div>
+<div id="piping" class="section level3" number="3.3.5">
+<h3><span class="header-section-number">3.3.5</span> Piping</h3>
+<p>When we created the object <code>africa_covid_cases_long</code>, you may have noticed this <code>%&gt;%</code></p>
+<p>This is called a pipe and more information can be found in the Epidemiologist R handbook: <a href="https://epirhandbook.com/r-basics.html#piping">3.11 Piping</a></p>
+<p>Pipes are used to link together multiple functions that you have instructed R to apply to a data frame. You can add comments to code to show other people (and remind yourself!) why you wrote the code in a particular way. Functions are carried out in the order they are linked to one another using pipes.</p>
+<p>The example applies the concept of piping to a recipe for baking a cake</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="management.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A fake example of how to bake a cake using piping syntax</span></span>
+<span id="cb59-2"><a href="management.html#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-3"><a href="management.html#cb59-3" aria-hidden="true" tabindex="-1"></a>cake <span class="ot">&lt;-</span> flour <span class="sc">%&gt;%</span>       <span class="co"># to define cake, start with flour, and then...</span></span>
+<span id="cb59-4"><a href="management.html#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(eggs) <span class="sc">%&gt;%</span>   <span class="co"># add eggs</span></span>
+<span id="cb59-5"><a href="management.html#cb59-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(oil) <span class="sc">%&gt;%</span>    <span class="co"># add oil</span></span>
+<span id="cb59-6"><a href="management.html#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add</span>(water) <span class="sc">%&gt;%</span>  <span class="co"># add water</span></span>
+<span id="cb59-7"><a href="management.html#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mix_together</span>(         <span class="co"># mix together</span></span>
+<span id="cb59-8"><a href="management.html#cb59-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">utensil =</span> spoon,</span>
+<span id="cb59-9"><a href="management.html#cb59-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">minutes =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span>    </span>
+<span id="cb59-10"><a href="management.html#cb59-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bake</span>(<span class="at">degrees =</span> <span class="dv">350</span>,   <span class="co"># bake</span></span>
+<span id="cb59-11"><a href="management.html#cb59-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">system =</span> <span class="st">&quot;fahrenheit&quot;</span>,</span>
+<span id="cb59-12"><a href="management.html#cb59-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">minutes =</span> <span class="dv">35</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb59-13"><a href="management.html#cb59-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">let_cool</span>()            <span class="co"># let it cool down</span></span></code></pre></div>
+</div>
+<div id="merging" class="section level3" number="3.3.6">
+<h3><span class="header-section-number">3.3.6</span> Merging</h3>
+<p>So far we have been working through examples using one dataset which we imported from an Excel file. Often it is necessary to import additional datasets and merge the two datasets into one. The tidyverse makes this process straightforward but before working through an example, we will briefly discuss the different types of merges you can do in R.</p>
+<div id="types-of-joins" class="section level4" number="3.3.6.1">
+<h4><span class="header-section-number">3.3.6.1</span> Types of joins</h4>
+<p><a href="https://docs.trifacta.com/display/DP/Join+Types"><img src="images/types_of_joins.png" width="450" alt="Join types" /></a></p>
+<p>This diagram shows some of the most common types of join you will encounter while working with data. When joining data, you need to tell R which column is in dataset A that can be used to link to dataset B. The type of join depends on what relationship you are trying to achieve.</p>
+</div>
+<div id="example-of-a-join" class="section level4" number="3.3.6.2">
+<h4><span class="header-section-number">3.3.6.2</span> Example of a join</h4>
+<p>In africa_covid_cases_long we have information about the number of confirmed COVID-19 cases for countries in Africa. To compare the data between countries it would be helpful to have population data for each country. This will allow us to estimate the total COVID-19 cases per 100,000 people.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="management.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Import population dataset</span></span>
+<span id="cb60-2"><a href="management.html#cb60-2" aria-hidden="true" tabindex="-1"></a>population_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">here</span>(<span class="st">&#39;data&#39;</span>,<span class="st">&#39;world_population_2021.csv&#39;</span>))</span>
+<span id="cb60-3"><a href="management.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(population_data)</span></code></pre></div>
+<pre><code>##    Location            PopTotal         PopDensity       
+##  Length:285         Min.   :      1   Min.   :    0.139  
+##  Class :character   1st Qu.:    705   1st Qu.:   33.018  
+##  Mode  :character   Median :   9437   Median :   82.565  
+##                     Mean   : 259672   Mean   :  407.795  
+##                     3rd Qu.:  47082   3rd Qu.:  208.593  
+##                     Max.   :7876435   Max.   :26517.450</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="management.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(population_data)</span></code></pre></div>
+<pre><code>##         Location    PopTotal PopDensity
+## 1    Afghanistan   39943.186     61.182
+## 2         Africa 1374661.367     46.365
+## 3        Albania    2871.801    104.810
+## 4        Algeria   44669.558     18.755
+## 5 American Samoa      55.137    275.685
+## 6        Andorra      77.406    164.694</code></pre>
+<p>It looks like the dataset has one row for each country/region. There are 3 columns</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="management.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(population_data)</span></code></pre></div>
+<pre><code>## [1] &quot;Location&quot;   &quot;PopTotal&quot;   &quot;PopDensity&quot;</code></pre>
+<p>The column “Location” will be used to join the population data to the africa_covid_long dataset. We can check the names of the columns in africa_covid_long to see what variable we can join on.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="management.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(africa_covid_cases_long)</span></code></pre></div>
+<pre><code>## [1] &quot;ISO&quot;            &quot;COUNTRY_NAME&quot;   &quot;AFRICAN_REGION&quot; &quot;excel_date&quot;    
+## [5] &quot;cases&quot;</code></pre>
+<p>“COUNTRY_NAME” will be used for the join. You will have noticed that the two datasets we are trying to join have different column names. Unlike other statistical programs (such as Stata), this is not a problem. We can use functions from the dplyr package to join the data.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="management.html#cb68-1" aria-hidden="true" tabindex="-1"></a>merged_data_left_join <span class="ot">&lt;-</span> <span class="fu">left_join</span>(africa_covid_cases_long, </span>
+<span id="cb68-2"><a href="management.html#cb68-2" aria-hidden="true" tabindex="-1"></a>                         population_data,</span>
+<span id="cb68-3"><a href="management.html#cb68-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;COUNTRY_NAME&quot;</span><span class="ot">=</span><span class="st">&quot;Location&quot;</span>))</span>
+<span id="cb68-4"><a href="management.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(merged_data_left_join)</span></code></pre></div>
+<pre><code>## tibble [25,917 × 7] (S3: tbl_df/tbl/data.frame)
+##  $ ISO           : chr [1:25917] &quot;DZA&quot; &quot;DZA&quot; &quot;DZA&quot; &quot;DZA&quot; ...
+##  $ COUNTRY_NAME  : chr [1:25917] &quot;Algeria&quot; &quot;Algeria&quot; &quot;Algeria&quot; &quot;Algeria&quot; ...
+##  $ AFRICAN_REGION: chr [1:25917] &quot;Northern Africa&quot; &quot;Northern Africa&quot; &quot;Northern Africa&quot; &quot;Northern Africa&quot; ...
+##  $ excel_date    : chr [1:25917] &quot;43831&quot; &quot;43832&quot; &quot;43833&quot; &quot;43834&quot; ...
+##  $ cases         : num [1:25917] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ PopTotal      : num [1:25917] 44670 44670 44670 44670 44670 ...
+##  $ PopDensity    : num [1:25917] 18.8 18.8 18.8 18.8 18.8 ...</code></pre>
+<p>The merge has succesfully joined the COVID data and the population data. We can change the type of join to see how this changes the results.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="management.html#cb70-1" aria-hidden="true" tabindex="-1"></a>merged_data_inner_join <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(africa_covid_cases_long, </span>
+<span id="cb70-2"><a href="management.html#cb70-2" aria-hidden="true" tabindex="-1"></a>                         population_data,</span>
+<span id="cb70-3"><a href="management.html#cb70-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;COUNTRY_NAME&quot;</span><span class="ot">=</span><span class="st">&quot;Location&quot;</span>))</span>
+<span id="cb70-4"><a href="management.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(merged_data_inner_join)</span></code></pre></div>
+<pre><code>## tibble [24,939 × 7] (S3: tbl_df/tbl/data.frame)
+##  $ ISO           : chr [1:24939] &quot;DZA&quot; &quot;DZA&quot; &quot;DZA&quot; &quot;DZA&quot; ...
+##  $ COUNTRY_NAME  : chr [1:24939] &quot;Algeria&quot; &quot;Algeria&quot; &quot;Algeria&quot; &quot;Algeria&quot; ...
+##  $ AFRICAN_REGION: chr [1:24939] &quot;Northern Africa&quot; &quot;Northern Africa&quot; &quot;Northern Africa&quot; &quot;Northern Africa&quot; ...
+##  $ excel_date    : chr [1:24939] &quot;43831&quot; &quot;43832&quot; &quot;43833&quot; &quot;43834&quot; ...
+##  $ cases         : num [1:24939] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ PopTotal      : num [1:24939] 44670 44670 44670 44670 44670 ...
+##  $ PopDensity    : num [1:24939] 18.8 18.8 18.8 18.8 18.8 ...</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="management.html#cb72-1" aria-hidden="true" tabindex="-1"></a>merged_data_right_join <span class="ot">&lt;-</span> <span class="fu">right_join</span>(africa_covid_cases_long, </span>
+<span id="cb72-2"><a href="management.html#cb72-2" aria-hidden="true" tabindex="-1"></a>                         population_data,</span>
+<span id="cb72-3"><a href="management.html#cb72-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;COUNTRY_NAME&quot;</span><span class="ot">=</span><span class="st">&quot;Location&quot;</span>))</span>
+<span id="cb72-4"><a href="management.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(merged_data_right_join)</span></code></pre></div>
+<pre><code>## tibble [25,173 × 7] (S3: tbl_df/tbl/data.frame)
+##  $ ISO           : chr [1:25173] &quot;DZA&quot; &quot;DZA&quot; &quot;DZA&quot; &quot;DZA&quot; ...
+##  $ COUNTRY_NAME  : chr [1:25173] &quot;Algeria&quot; &quot;Algeria&quot; &quot;Algeria&quot; &quot;Algeria&quot; ...
+##  $ AFRICAN_REGION: chr [1:25173] &quot;Northern Africa&quot; &quot;Northern Africa&quot; &quot;Northern Africa&quot; &quot;Northern Africa&quot; ...
+##  $ excel_date    : chr [1:25173] &quot;43831&quot; &quot;43832&quot; &quot;43833&quot; &quot;43834&quot; ...
+##  $ cases         : num [1:25173] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ PopTotal      : num [1:25173] 44670 44670 44670 44670 44670 ...
+##  $ PopDensity    : num [1:25173] 18.8 18.8 18.8 18.8 18.8 ...</code></pre>
+<p>This is an important concept to understand. If the join is not doing what you want it to do, your analysis could be wrong!</p>
+<p>Additional examples can be found in the Epidemiologist R handbook <a href="https://epirhandbook.com/joining-data.html#dplyr-joins">14.2 dplyr joins</a></p>
+</div>
+</div>
+</div>
+<div id="working-with-dates" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Working with dates</h2>
+<p>To add to the confusion, Excel has 2 additional date systems:</p>
+<ol style="list-style-type: decimal">
+<li><p>1900 date system</p></li>
+<li><p>1904 date system</p>
+<div class="figure">
+<img src="images/excel_date_format.png" width="450" alt="" />
+<p class="caption"><a href="https://support.microsoft.com/en-us/office/date-systems-in-excel-e7fe7167-48a9-4b96-bb53-5612a800b487" class="uri">https://support.microsoft.com/en-us/office/date-systems-in-excel-e7fe7167-48a9-4b96-bb53-5612a800b487</a></p>
+</div></li>
+</ol>
+<p>In the data set we are using, the dates are in this format:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="management.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(africa_covid_cases_long<span class="sc">$</span>excel_date)</span></code></pre></div>
+<pre><code>## [1] &quot;43831&quot; &quot;43832&quot; &quot;43833&quot; &quot;43834&quot; &quot;43835&quot; &quot;43836&quot;</code></pre>
+<p>We can use a function from another package to convert this to a standard date format.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="management.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;janitor&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="management.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;janitor&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     chisq.test, fisher.test</code></pre>
+<p>The package <a href="https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html"><code>janitor</code></a> has many helpful functions for cleaning data</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="management.html#cb80-1" aria-hidden="true" tabindex="-1"></a>africa_covid_cases_long <span class="ot">&lt;-</span> africa_covid_cases_long <span class="sc">%&gt;%</span> </span>
+<span id="cb80-2"><a href="management.html#cb80-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date_format=</span><span class="fu">excel_numeric_to_date</span>(<span class="fu">as.numeric</span>(excel_date)))</span>
+<span id="cb80-3"><a href="management.html#cb80-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-4"><a href="management.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(africa_covid_cases_long<span class="sc">$</span>date_format)</span></code></pre></div>
+<pre><code>## [1] &quot;2020-01-01&quot; &quot;2020-01-02&quot; &quot;2020-01-03&quot; &quot;2020-01-04&quot; &quot;2020-01-05&quot;
+## [6] &quot;2020-01-06&quot;</code></pre>
+<p>The new variable created “date_format” is in the format YEAR-MONTH-DATE.</p>
+<p>We can also check if the values in the new variable look correct</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="management.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(africa_covid_cases_long<span class="sc">$</span>date_format) <span class="co">#minimum date</span></span></code></pre></div>
+<pre><code>## [1] &quot;2020-01-01&quot;</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="management.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(africa_covid_cases_long<span class="sc">$</span>date_format) <span class="co">#maximum date</span></span></code></pre></div>
+<pre><code>## [1] &quot;2021-05-03&quot;</code></pre>
+<p>We know this is a data set of COVID cases so the date range (from the start of 2020 through to May of 2021) looks to be correct.</p>
+</div>
+<div id="useful-resource" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Useful resource</h2>
+<p><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Data wrangling with dplyr and tidyr</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="session-1-introduction-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

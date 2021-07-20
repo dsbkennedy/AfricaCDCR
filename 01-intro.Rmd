@@ -10,7 +10,7 @@
 
 ## Course structure
 
-6 teaching sessions drawing from a number of resources including the [Epidemiologist R handbook](https://epirhandbook.com/)
+6 teaching sessions drawing from several resources including the [Epidemiologist R handbook](https://epirhandbook.com/)
 
 -   An excellent resource for all skill/experience levels
 
@@ -66,9 +66,7 @@ Projects are covered in more detail in the Epidemiologist R handbook: [Chapter 6
 
 #### Naming files and folders
 
-If you want to share your code with colleagues or when you return to code after several weeks/months you will be grateful that you gave your files and folders meaningful names!
-
-Many organisations have style guides to ensure that teams can collaborate on coding projects
+If you want to share your code with colleagues or return to code after several weeks/months, you will be grateful that you gave your files and folders meaningful names! Many organisations have style guides to ensure that teams can collaborate on coding projects.
 
 -   [Tidyverse style guide](https://style.tidyverse.org/files.html#names)
 
@@ -104,7 +102,7 @@ RStudio is the most popular option for working with the R programming language. 
 
 *"An R package is a shareable bundle of code and documentation that contains pre-defined functions. Users in the R community develop packages all the time catered to specific problems, it is likely that one can help with your work! You will install and use hundreds of packages in your use of R."*
 
-Packages can simplify your workflow by combining multiple steps into a smaller number of commands
+Packages can simplify your workflow by combining multiple steps into a smaller number of commands.
 
 Example: [**readxl**](https://readxl.tidyverse.org/) is a package of functions used to import data from Excel to R.
 
@@ -114,19 +112,19 @@ install.packages("readxl")
 
 We have asked R to install the package **readxl**.
 
-The installation has been successful. You do not need to re install the packages every time you start a new project as they are saved in your library.
+The installation has been successful. You do not need to reinstall the packages every time you start a new project as they are saved in your library.
 
 -   In R, red text does not mean there has been an error! It means that R is warning you about something related to the function you have instructed R to apply to the data.
 
     Epidemiologist R handbook: [Section 3.13 Errors vs. warnings](https://epirhandbook.com/r-basics.html#errors-warnings)
 
-    You will now be able to see the package in your list of packages
+    You will now be able to see the package in your list of packages.
 
     ![](images/install_readxl.png){width="250"}
 
 ### Loading a package
 
-Now that `readxl` has been installed, you will be able to load it and use its functions
+Now that `readxl` has been installed, you will be able to load it and use its functions.
 
 ```{r}
 library(readxl)
@@ -160,7 +158,7 @@ To read more about a particular package, type
 
 ## Objects
 
-So far we have installed, loaded and used a package (**readxl**). But how do we use the data generated from applying the functions? We assign the information to "objects"
+So far we have installed, loaded and used a package (**readxl**). But how do we use the data generated from applying the functions? We assign the information to "objects".
 
 [Section in Epidemiologist for R handbook about Objects](https://epirhandbook.com/r-basics.html#objects)
 
@@ -172,19 +170,19 @@ To explain objects, we will calculate a value, assign it to an object and then u
 2+2
 ```
 
-We can assign the calculation "2+2" to an object called "a"
+We can assign the calculation "2+2" to an object called "a".
 
 ```{r}
 a <- 2+2
 ```
 
-We can then use the object a to show the results of the calculation
+We can then use the object a to show the results of the calculation.
 
 ```{r}
 a
 ```
 
-We can also use this value for further calculations such as adding 4 to the object a
+We can also use this value for further calculations such as adding 4 to the object a.
 
 ```{r}
 a + 4
@@ -192,7 +190,7 @@ b <- a+4
 
 ```
 
-The result of this calculation is now stored in the object "b"
+The result of this calculation is now stored in the object "b".
 
 ```{r}
 b
@@ -200,9 +198,7 @@ b
 
 ## Importing data
 
-For this example, we want to import data that is currently stored in an Excel formatted file ".xlsx"
-
-So we can use the function *`read_xlsx` f*rom the **readxl** package
+For this example, we want to import data that is currently stored in an Excel formatted file ".xlsx". So we can use the function *`read_xlsx` f*rom the **readxl** package.
 
 ```{r}
 read_xlsx(here('data','AfricaCovid','AfricaCovid.xlsx'))
@@ -236,9 +232,9 @@ We can see a snapshot of the data from the sheet "Infected_per_day"
 
 ### Assigning data to an object
 
-In the previous section, we used the function `read_xlsx` from the package **readxl** to import data from an Excel spreadsheet.
+We have previously used the function `read_xlsx` from the package **readxl** to import data from an Excel spreadsheet.
 
-But we didn't assign this to an object, so it is not possible to use the data from the import step.
+However, we didn't assign this data to an object, so it is not possible to use the data from the import step.
 
 We can assign the data to an object and then conduct further analysis.
 

@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Session 4: Data visualisation | R Training Manual</title>
+  <meta name="description" content="5 Session 4: Data visualisation | R Training Manual" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Session 4: Data visualisation | R Training Manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Session 4: Data visualisation | R Training Manual" />
+  
+  
+  
+
+<meta name="author" content="UK Public Health Rapid Support Team" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="session-3-data-analysis.html"/>
+
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Session 1: Introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#course-structure"><i class="fa fa-check"></i><b>2.1</b> Course structure</a></li>
+<li class="chapter" data-level="2.2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#why-r"><i class="fa fa-check"></i><b>2.2</b> Why R?</a></li>
+<li class="chapter" data-level="2.3" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#installing-r"><i class="fa fa-check"></i><b>2.3</b> Installing R</a></li>
+<li class="chapter" data-level="2.4" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#setting-up-files-and-folders"><i class="fa fa-check"></i><b>2.4</b> Setting up files and folders</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#best-practice"><i class="fa fa-check"></i><b>2.4.1</b> Best practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#navigating-in-r-studio"><i class="fa fa-check"></i><b>2.5</b> Navigating in R studio</a></li>
+<li class="chapter" data-level="2.6" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#r-packages"><i class="fa fa-check"></i><b>2.6</b> R packages</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#what-is-an-r-package"><i class="fa fa-check"></i><b>2.6.1</b> What is an R package?</a></li>
+<li class="chapter" data-level="2.6.2" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#installing-a-package"><i class="fa fa-check"></i><b>2.6.2</b> Installing a package</a></li>
+<li class="chapter" data-level="2.6.3" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#loading-a-package"><i class="fa fa-check"></i><b>2.6.3</b> Loading a package</a></li>
+<li class="chapter" data-level="2.6.4" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#using-a-package"><i class="fa fa-check"></i><b>2.6.4</b> Using a package</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#objects"><i class="fa fa-check"></i><b>2.7</b> Objects</a></li>
+<li class="chapter" data-level="2.8" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#importing-data"><i class="fa fa-check"></i><b>2.8</b> Importing data</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#assigning-data-to-an-object"><i class="fa fa-check"></i><b>2.8.1</b> Assigning data to an object</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#exporting-data"><i class="fa fa-check"></i><b>2.9</b> Exporting data</a></li>
+<li class="chapter" data-level="2.10" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#exercises"><i class="fa fa-check"></i><b>2.10</b> Exercises</a></li>
+<li class="chapter" data-level="2.11" data-path="session-1-introduction-to-r.html"><a href="session-1-introduction-to-r.html#useful-resources"><i class="fa fa-check"></i><b>2.11</b> Useful resources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="session-2-data-management.html"><a href="session-2-data-management.html"><i class="fa fa-check"></i><b>3</b> Session 2: Data management</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="session-2-data-management.html"><a href="session-2-data-management.html#data-types"><i class="fa fa-check"></i><b>3.1</b> Data types</a></li>
+<li class="chapter" data-level="3.2" data-path="session-2-data-management.html"><a href="session-2-data-management.html#working-with-data"><i class="fa fa-check"></i><b>3.2</b> Working with data</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="session-2-data-management.html"><a href="session-2-data-management.html#looking-at-your-data"><i class="fa fa-check"></i><b>3.2.1</b> Looking at your data</a></li>
+<li class="chapter" data-level="3.2.2" data-path="session-2-data-management.html"><a href="session-2-data-management.html#looking-at-one-variable"><i class="fa fa-check"></i><b>3.2.2</b> Looking at one variable</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="session-2-data-management.html"><a href="session-2-data-management.html#the-tidyverse"><i class="fa fa-check"></i><b>3.3</b> The tidyverse</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="session-2-data-management.html"><a href="session-2-data-management.html#tidy-data"><i class="fa fa-check"></i><b>3.3.1</b> Tidy data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="session-2-data-management.html"><a href="session-2-data-management.html#checking-if-data-are-tidy"><i class="fa fa-check"></i><b>3.3.2</b> Checking if data are tidy</a></li>
+<li class="chapter" data-level="3.3.3" data-path="session-2-data-management.html"><a href="session-2-data-management.html#tidying-data"><i class="fa fa-check"></i><b>3.3.3</b> Tidying data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="session-2-data-management.html"><a href="session-2-data-management.html#wide-to-long"><i class="fa fa-check"></i><b>3.3.4</b> Wide to long</a></li>
+<li class="chapter" data-level="3.3.5" data-path="session-2-data-management.html"><a href="session-2-data-management.html#piping"><i class="fa fa-check"></i><b>3.3.5</b> Piping</a></li>
+<li class="chapter" data-level="3.3.6" data-path="session-2-data-management.html"><a href="session-2-data-management.html#merging"><i class="fa fa-check"></i><b>3.3.6</b> Merging</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="session-2-data-management.html"><a href="session-2-data-management.html#working-with-dates"><i class="fa fa-check"></i><b>3.4</b> Working with dates</a></li>
+<li class="chapter" data-level="3.5" data-path="session-2-data-management.html"><a href="session-2-data-management.html#keeping-your-workspace-clear"><i class="fa fa-check"></i><b>3.5</b> Keeping your workspace clear</a></li>
+<li class="chapter" data-level="3.6" data-path="session-2-data-management.html"><a href="session-2-data-management.html#useful-resource"><i class="fa fa-check"></i><b>3.6</b> Useful resource</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html"><i class="fa fa-check"></i><b>4</b> Session 3: Data analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#looking-at-your-data-1"><i class="fa fa-check"></i><b>4.1</b> Looking at your data</a></li>
+<li class="chapter" data-level="4.2" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#building-an-analysis-dataset"><i class="fa fa-check"></i><b>4.2</b> Building an analysis dataset</a></li>
+<li class="chapter" data-level="4.3" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#answering-questions-with-data"><i class="fa fa-check"></i><b>4.3</b> Answering questions with data</a></li>
+<li class="chapter" data-level="4.4" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#missing-data"><i class="fa fa-check"></i><b>4.4</b> Missing data</a></li>
+<li class="chapter" data-level="4.5" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#grouping-and-pivoting-data"><i class="fa fa-check"></i><b>4.5</b> Grouping and pivoting data</a></li>
+<li class="chapter" data-level="4.6" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#filtering-data"><i class="fa fa-check"></i><b>4.6</b> Filtering data</a></li>
+<li class="chapter" data-level="4.7" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#additional-questions-and-workflows"><i class="fa fa-check"></i><b>4.7</b> Additional questions and workflows</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#when-was-the-first-confirmed-case-of-covid-19-in-northern-africa"><i class="fa fa-check"></i><b>4.7.1</b> <em>When was the first confirmed case of COVID-19 in Northern Africa?</em></a></li>
+<li class="chapter" data-level="4.7.2" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#using-the-results-in-rmarkdown"><i class="fa fa-check"></i><b>4.7.2</b> Using the results in RMarkdown</a></li>
+<li class="chapter" data-level="4.7.3" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#moving-averages"><i class="fa fa-check"></i><b>4.7.3</b> Moving averages</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="session-3-data-analysis.html"><a href="session-3-data-analysis.html#useful-resources-1"><i class="fa fa-check"></i><b>4.8</b> Useful resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html"><i class="fa fa-check"></i><b>5</b> Session 4: Data visualisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html#presenting-your-results-in-a-table"><i class="fa fa-check"></i><b>5.1</b> Presenting your results in a table</a></li>
+<li class="chapter" data-level="5.2" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html#visualising-data-using-ggplot"><i class="fa fa-check"></i><b>5.2</b> Visualising data using ggplot</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html#epicurves"><i class="fa fa-check"></i><b>5.2.1</b> Epicurves</a></li>
+<li class="chapter" data-level="5.2.2" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html#building-your-confidence"><i class="fa fa-check"></i><b>5.2.2</b> Building your confidence</a></li>
+<li class="chapter" data-level="5.2.3" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html#picking-the-right-graph"><i class="fa fa-check"></i><b>5.2.3</b> Picking the right graph</a></li>
+<li class="chapter" data-level="5.2.4" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html#visualising-the-moving-average"><i class="fa fa-check"></i><b>5.2.4</b> Visualising the moving average</a></li>
+<li class="chapter" data-level="5.2.5" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html#combining-plots"><i class="fa fa-check"></i><b>5.2.5</b> Combining plots</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="session-4-data-visualisation.html"><a href="session-4-data-visualisation.html#useful-resources-2"><i class="fa fa-check"></i><b>5.3</b> Useful resources</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Training Manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="session-4-data-visualisation" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Session 4: Data visualisation</h1>
+<div id="presenting-your-results-in-a-table" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Presenting your results in a table</h2>
+<p>And use functions from another package to display the information in a more user-friendly table.</p>
+<p>The <code>gt</code> package provides a very flexible interface for building tables from your data.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="session-4-data-visualisation.html#cb129-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(gt)</span></code></pre></div>
+<p>The documentation describing the functions can be found <a href="https://gt.rstudio.com/articles/case-study-gtcars.html">here</a>.</p>
+<p>Below is an example using the dataset we have built.</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="session-4-data-visualisation.html#cb130-1" aria-hidden="true" tabindex="-1"></a>northern_africa_cases_country_table <span class="ot">&lt;-</span> northern_africa_cases_country <span class="sc">%&gt;%</span> </span>
+<span id="cb130-2"><a href="session-4-data-visualisation.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb130-3"><a href="session-4-data-visualisation.html#cb130-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">tab_header</span>(</span>
+<span id="cb130-4"><a href="session-4-data-visualisation.html#cb130-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">md</span>(<span class="st">&quot;COVID-19 in Northern Africa&quot;</span>)</span>
+<span id="cb130-5"><a href="session-4-data-visualisation.html#cb130-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-6"><a href="session-4-data-visualisation.html#cb130-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb130-7"><a href="session-4-data-visualisation.html#cb130-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">&quot;Country&quot;</span>,</span>
+<span id="cb130-8"><a href="session-4-data-visualisation.html#cb130-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_covid_cases =</span> <span class="st">&quot;N&quot;</span>,</span>
+<span id="cb130-9"><a href="session-4-data-visualisation.html#cb130-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> <span class="st">&quot;% of total cases in Northern Africa&quot;</span></span>
+<span id="cb130-10"><a href="session-4-data-visualisation.html#cb130-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-11"><a href="session-4-data-visualisation.html#cb130-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_spanner</span>(</span>
+<span id="cb130-12"><a href="session-4-data-visualisation.html#cb130-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Confirmed cases&quot;</span>,</span>
+<span id="cb130-13"><a href="session-4-data-visualisation.html#cb130-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(total_covid_cases,percentage)</span>
+<span id="cb130-14"><a href="session-4-data-visualisation.html#cb130-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-15"><a href="session-4-data-visualisation.html#cb130-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fmt_number</span>(</span>
+<span id="cb130-16"><a href="session-4-data-visualisation.html#cb130-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> total_covid_cases,</span>
+<span id="cb130-17"><a href="session-4-data-visualisation.html#cb130-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals=</span><span class="dv">0</span>,</span>
+<span id="cb130-18"><a href="session-4-data-visualisation.html#cb130-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">use_seps =</span> <span class="cn">TRUE</span></span>
+<span id="cb130-19"><a href="session-4-data-visualisation.html#cb130-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-20"><a href="session-4-data-visualisation.html#cb130-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">cols_align</span>(</span>
+<span id="cb130-21"><a href="session-4-data-visualisation.html#cb130-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;center&quot;</span>,</span>
+<span id="cb130-22"><a href="session-4-data-visualisation.html#cb130-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(total_covid_cases, percentage)</span>
+<span id="cb130-23"><a href="session-4-data-visualisation.html#cb130-23" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb130-24"><a href="session-4-data-visualisation.html#cb130-24" aria-hidden="true" tabindex="-1"></a>northern_africa_cases_country_table</span></code></pre></div>
+<div id="tcnoxgmuqq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#tcnoxgmuqq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tcnoxgmuqq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tcnoxgmuqq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tcnoxgmuqq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tcnoxgmuqq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tcnoxgmuqq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tcnoxgmuqq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tcnoxgmuqq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tcnoxgmuqq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tcnoxgmuqq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tcnoxgmuqq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tcnoxgmuqq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tcnoxgmuqq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#tcnoxgmuqq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tcnoxgmuqq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tcnoxgmuqq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tcnoxgmuqq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tcnoxgmuqq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tcnoxgmuqq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#tcnoxgmuqq .gt_left {
+  text-align: left;
+}
+
+#tcnoxgmuqq .gt_center {
+  text-align: center;
+}
+
+#tcnoxgmuqq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tcnoxgmuqq .gt_font_normal {
+  font-weight: normal;
+}
+
+#tcnoxgmuqq .gt_font_bold {
+  font-weight: bold;
+}
+
+#tcnoxgmuqq .gt_font_italic {
+  font-style: italic;
+}
+
+#tcnoxgmuqq .gt_super {
+  font-size: 65%;
+}
+
+#tcnoxgmuqq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="3" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>COVID-19 in Northern Africa</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1">Country</th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2">
+        <span class="gt_column_spanner">Confirmed cases</span>
+      </th>
+    </tr>
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">N</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">% of total cases in Northern Africa</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Morocco</td>
+<td class="gt_row gt_center">511,856</td>
+<td class="gt_row gt_center">37.3%</td></tr>
+    <tr><td class="gt_row gt_left">Tunisia</td>
+<td class="gt_row gt_center">311,743</td>
+<td class="gt_row gt_center">22.7%</td></tr>
+    <tr><td class="gt_row gt_left">Egypt</td>
+<td class="gt_row gt_center">228,584</td>
+<td class="gt_row gt_center">16.7%</td></tr>
+    <tr><td class="gt_row gt_left">Libya</td>
+<td class="gt_row gt_center">178,335</td>
+<td class="gt_row gt_center">13.0%</td></tr>
+    <tr><td class="gt_row gt_left">Algeria</td>
+<td class="gt_row gt_center">122,522</td>
+<td class="gt_row gt_center">8.9%</td></tr>
+    <tr><td class="gt_row gt_left">Mauritania</td>
+<td class="gt_row gt_center">18,429</td>
+<td class="gt_row gt_center">1.3%</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p><code>gt</code> has many options for customising tables. To demonstrate this, we will build a table to show when each country in Africa recorded its first COVID-19 case. This example uses some of the techniques demonstrated in <a href="https://www.liamdbailey.com/post/making-beautiful-tables-with-gt/">this article</a>.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="session-4-data-visualisation.html#cb131-1" aria-hidden="true" tabindex="-1"></a>first_cases_africa <span class="ot">&lt;-</span> africa_covid_cases_long <span class="sc">%&gt;%</span> </span>
+<span id="cb131-2"><a href="session-4-data-visualisation.html#cb131-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">date=</span>date_format,<span class="at">region=</span>AFRICAN_REGION, <span class="at">country=</span>COUNTRY_NAME, cases) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-3"><a href="session-4-data-visualisation.html#cb131-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region,country) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-4"><a href="session-4-data-visualisation.html#cb131-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cases<span class="sc">&gt;</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-5"><a href="session-4-data-visualisation.html#cb131-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">==</span> <span class="fu">min</span>(date, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-6"><a href="session-4-data-visualisation.html#cb131-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb131-7"><a href="session-4-data-visualisation.html#cb131-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-8"><a href="session-4-data-visualisation.html#cb131-8" aria-hidden="true" tabindex="-1"></a>first_cases_africa_table <span class="ot">&lt;-</span> first_cases_africa <span class="sc">%&gt;%</span> </span>
+<span id="cb131-9"><a href="session-4-data-visualisation.html#cb131-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region,country,date) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-10"><a href="session-4-data-visualisation.html#cb131-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-11"><a href="session-4-data-visualisation.html#cb131-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-12"><a href="session-4-data-visualisation.html#cb131-12" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb131-13"><a href="session-4-data-visualisation.html#cb131-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb131-14"><a href="session-4-data-visualisation.html#cb131-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">md</span>(<span class="st">&quot;When did countries in Africa record their first case of COVID-19?&quot;</span>)</span>
+<span id="cb131-15"><a href="session-4-data-visualisation.html#cb131-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-16"><a href="session-4-data-visualisation.html#cb131-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_date</span>(</span>
+<span id="cb131-17"><a href="session-4-data-visualisation.html#cb131-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> date,</span>
+<span id="cb131-18"><a href="session-4-data-visualisation.html#cb131-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_style =</span> <span class="dv">4</span></span>
+<span id="cb131-19"><a href="session-4-data-visualisation.html#cb131-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-20"><a href="session-4-data-visualisation.html#cb131-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_all_caps</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb131-21"><a href="session-4-data-visualisation.html#cb131-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Use the Chivo font</span></span>
+<span id="cb131-22"><a href="session-4-data-visualisation.html#cb131-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Note the great &#39;google_font&#39; function in &#39;gt&#39; that removes the need to pre-load fonts</span></span>
+<span id="cb131-23"><a href="session-4-data-visualisation.html#cb131-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_font</span>(</span>
+<span id="cb131-24"><a href="session-4-data-visualisation.html#cb131-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">font =</span> <span class="fu">list</span>(</span>
+<span id="cb131-25"><a href="session-4-data-visualisation.html#cb131-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">google_font</span>(<span class="st">&quot;Chivo&quot;</span>),</span>
+<span id="cb131-26"><a href="session-4-data-visualisation.html#cb131-26" aria-hidden="true" tabindex="-1"></a>      <span class="fu">default_fonts</span>()</span>
+<span id="cb131-27"><a href="session-4-data-visualisation.html#cb131-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb131-28"><a href="session-4-data-visualisation.html#cb131-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb131-29"><a href="session-4-data-visualisation.html#cb131-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb131-30"><a href="session-4-data-visualisation.html#cb131-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">&quot;Country&quot;</span>,</span>
+<span id="cb131-31"><a href="session-4-data-visualisation.html#cb131-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">date =</span> <span class="st">&quot;Date&quot;</span></span>
+<span id="cb131-32"><a href="session-4-data-visualisation.html#cb131-32" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">%&gt;%</span> </span>
+<span id="cb131-33"><a href="session-4-data-visualisation.html#cb131-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(</span>
+<span id="cb131-34"><a href="session-4-data-visualisation.html#cb131-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="st">&quot;center&quot;</span>,</span>
+<span id="cb131-35"><a href="session-4-data-visualisation.html#cb131-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(country, date)</span>
+<span id="cb131-36"><a href="session-4-data-visualisation.html#cb131-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-37"><a href="session-4-data-visualisation.html#cb131-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(</span>
+<span id="cb131-38"><a href="session-4-data-visualisation.html#cb131-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">column_labels.border.top.width =</span> <span class="fu">px</span>(<span class="dv">3</span>),</span>
+<span id="cb131-39"><a href="session-4-data-visualisation.html#cb131-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">column_labels.border.top.color =</span> <span class="st">&quot;transparent&quot;</span>,</span>
+<span id="cb131-40"><a href="session-4-data-visualisation.html#cb131-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.border.top.color =</span> <span class="st">&quot;transparent&quot;</span>,</span>
+<span id="cb131-41"><a href="session-4-data-visualisation.html#cb131-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">table.border.bottom.color =</span> <span class="st">&quot;transparent&quot;</span>,</span>
+<span id="cb131-42"><a href="session-4-data-visualisation.html#cb131-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">data_row.padding =</span> <span class="fu">px</span>(<span class="dv">3</span>),</span>
+<span id="cb131-43"><a href="session-4-data-visualisation.html#cb131-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_notes.font.size =</span> <span class="dv">12</span>,</span>
+<span id="cb131-44"><a href="session-4-data-visualisation.html#cb131-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">heading.align =</span> <span class="st">&quot;left&quot;</span>,</span>
+<span id="cb131-45"><a href="session-4-data-visualisation.html#cb131-45" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Adjust grouped rows to make them stand out</span></span>
+<span id="cb131-46"><a href="session-4-data-visualisation.html#cb131-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">row_group.background.color =</span> <span class="st">&quot;grey&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-47"><a href="session-4-data-visualisation.html#cb131-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">&quot;Data: Compiled from national governments and WHO by Humanitarian Emergency Response Africa (HERA)&quot;</span>)</span>
+<span id="cb131-48"><a href="session-4-data-visualisation.html#cb131-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-49"><a href="session-4-data-visualisation.html#cb131-49" aria-hidden="true" tabindex="-1"></a>first_cases_africa_table</span></code></pre></div>
+<div id="xqmyoxccnu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#xqmyoxccnu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: transparent;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: transparent;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xqmyoxccnu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xqmyoxccnu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xqmyoxccnu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xqmyoxccnu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xqmyoxccnu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xqmyoxccnu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xqmyoxccnu .gt_group_heading {
+  padding: 8px;
+  color: #FFFFFF;
+  background-color: grey;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xqmyoxccnu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #FFFFFF;
+  background-color: grey;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xqmyoxccnu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xqmyoxccnu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xqmyoxccnu .gt_row {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xqmyoxccnu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#xqmyoxccnu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xqmyoxccnu .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xqmyoxccnu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xqmyoxccnu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xqmyoxccnu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xqmyoxccnu .gt_sourcenote {
+  font-size: 12px;
+  padding: 4px;
+}
+
+#xqmyoxccnu .gt_left {
+  text-align: left;
+}
+
+#xqmyoxccnu .gt_center {
+  text-align: center;
+}
+
+#xqmyoxccnu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xqmyoxccnu .gt_font_normal {
+  font-weight: normal;
+}
+
+#xqmyoxccnu .gt_font_bold {
+  font-weight: bold;
+}
+
+#xqmyoxccnu .gt_font_italic {
+  font-style: italic;
+}
+
+#xqmyoxccnu .gt_super {
+  font-size: 65%;
+}
+
+#xqmyoxccnu .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>When did countries in Africa record their first case of COVID-19?</th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Country</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">Date</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Northern Africa</td>
+    </tr>
+    <tr><td class="gt_row gt_center">Egypt</td>
+<td class="gt_row gt_center">Friday 14 February 2020</td></tr>
+    <tr><td class="gt_row gt_center">Algeria</td>
+<td class="gt_row gt_center">Tuesday 25 February 2020</td></tr>
+    <tr><td class="gt_row gt_center">Morocco</td>
+<td class="gt_row gt_center">Monday 2 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Tunisia</td>
+<td class="gt_row gt_center">Monday 2 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Mauritania</td>
+<td class="gt_row gt_center">Friday 13 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Libya</td>
+<td class="gt_row gt_center">Tuesday 24 March 2020</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Western Africa</td>
+    </tr>
+    <tr><td class="gt_row gt_center">Nigeria</td>
+<td class="gt_row gt_center">Thursday 27 February 2020</td></tr>
+    <tr><td class="gt_row gt_center">Senegal</td>
+<td class="gt_row gt_center">Friday 28 February 2020</td></tr>
+    <tr><td class="gt_row gt_center">Togo</td>
+<td class="gt_row gt_center">Friday 6 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Burkina Faso</td>
+<td class="gt_row gt_center">Monday 9 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Cote d'Ivoire</td>
+<td class="gt_row gt_center">Wednesday 11 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Ghana</td>
+<td class="gt_row gt_center">Thursday 12 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Guinea</td>
+<td class="gt_row gt_center">Thursday 12 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Benin</td>
+<td class="gt_row gt_center">Monday 16 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Gambia</td>
+<td class="gt_row gt_center">Monday 16 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Liberia</td>
+<td class="gt_row gt_center">Monday 16 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Niger</td>
+<td class="gt_row gt_center">Thursday 19 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Guinea-Bissau</td>
+<td class="gt_row gt_center">Wednesday 25 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Mali</td>
+<td class="gt_row gt_center">Wednesday 25 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Sierra Leone</td>
+<td class="gt_row gt_center">Tuesday 31 March 2020</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Southern Africa</td>
+    </tr>
+    <tr><td class="gt_row gt_center">South Africa</td>
+<td class="gt_row gt_center">Thursday 5 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Eswatini</td>
+<td class="gt_row gt_center">Saturday 14 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Namibia</td>
+<td class="gt_row gt_center">Saturday 14 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Zimbabwe</td>
+<td class="gt_row gt_center">Friday 20 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Angola</td>
+<td class="gt_row gt_center">Saturday 21 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Zambia</td>
+<td class="gt_row gt_center">Sunday 22 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Mozambique</td>
+<td class="gt_row gt_center">Monday 23 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Botswana</td>
+<td class="gt_row gt_center">Monday 30 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Malawi</td>
+<td class="gt_row gt_center">Thursday 2 April 2020</td></tr>
+    <tr><td class="gt_row gt_center">Lesotho</td>
+<td class="gt_row gt_center">Tuesday 12 May 2020</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Central Africa</td>
+    </tr>
+    <tr><td class="gt_row gt_center">Cameroon</td>
+<td class="gt_row gt_center">Friday 6 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Democratic Republic of the Congo</td>
+<td class="gt_row gt_center">Tuesday 10 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Gabon</td>
+<td class="gt_row gt_center">Thursday 12 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Central African Republic</td>
+<td class="gt_row gt_center">Saturday 14 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Equatorial Guinea</td>
+<td class="gt_row gt_center">Saturday 14 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Chad</td>
+<td class="gt_row gt_center">Thursday 19 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Congo</td>
+<td class="gt_row gt_center">Sunday 22 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Burundi</td>
+<td class="gt_row gt_center">Tuesday 31 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Sao Tome and Principe</td>
+<td class="gt_row gt_center">Monday 6 April 2020</td></tr>
+    <tr class="gt_group_heading_row">
+      <td colspan="2" class="gt_group_heading">Eastern Africa</td>
+    </tr>
+    <tr><td class="gt_row gt_center">Ethiopia</td>
+<td class="gt_row gt_center">Friday 13 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Kenya</td>
+<td class="gt_row gt_center">Friday 13 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Sudan</td>
+<td class="gt_row gt_center">Friday 13 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Rwanda</td>
+<td class="gt_row gt_center">Saturday 14 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Somalia</td>
+<td class="gt_row gt_center">Monday 16 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Mayotte</td>
+<td class="gt_row gt_center">Tuesday 17 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Tanzania</td>
+<td class="gt_row gt_center">Tuesday 17 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Djibouti</td>
+<td class="gt_row gt_center">Wednesday 18 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Mauritius</td>
+<td class="gt_row gt_center">Wednesday 18 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Madagascar</td>
+<td class="gt_row gt_center">Friday 20 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Eritrea</td>
+<td class="gt_row gt_center">Saturday 21 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">Uganda</td>
+<td class="gt_row gt_center">Saturday 21 March 2020</td></tr>
+    <tr><td class="gt_row gt_center">South Sudan</td>
+<td class="gt_row gt_center">Monday 6 April 2020</td></tr>
+    <tr><td class="gt_row gt_center">Comoros</td>
+<td class="gt_row gt_center">Thursday 30 April 2020</td></tr>
+  </tbody>
+  <tfoot class="gt_sourcenotes">
+    <tr>
+      <td class="gt_sourcenote" colspan="2">Data: Compiled from national governments and WHO by Humanitarian Emergency Response Africa (HERA)</td>
+    </tr>
+  </tfoot>
+  
+</table>
+</div>
+</div>
+<div id="visualising-data-using-ggplot" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Visualising data using ggplot</h2>
+<p>One of the major strengths of R is visualising data. There are many packages which have functions you can use to make graphs, tables, maps…the list is endless!</p>
+<p>The first package of functions we will use for visualising data is another core <code>tidyverse</code> package called <code>ggplot2.</code> This is commonly referred to as <code>ggplot</code></p>
+<p>We have already loaded the package when we ran <code>library(tidyverse)</code></p>
+<p>You can also choose to only load the ggplot2 package by typing <code>library(ggplot2)</code></p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="session-4-data-visualisation.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>The Epidemiologist R handbook has 2 sections focused on <code>ggplot</code></p>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://epirhandbook.com/ggplot-basics.html">ggplot basics</a></p></li>
+<li><p><a href="https://epirhandbook.com/ggplot-tips.html">ggplot tips</a></p></li>
+</ol>
+<p>These sections contain very helpful explanations of many of the functions available with ggplot. There are also a number of excellent references for every type of graph you want to make.</p>
+<p>We will walk through some common examples to teach some of the most common approaches</p>
+<div id="epicurves" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Epicurves</h3>
+<p>Firstly, we will produce epicurves to describe the distribution of COVID-19 cases (y axis) over time (x axis).</p>
+<p>Make a graph of confirmed COVID-19 cases in Northern Africa</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="session-4-data-visualisation.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(northern_africa, <span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>cases)) <span class="sc">+</span></span>
+<span id="cb133-2"><a href="session-4-data-visualisation.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 7 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p>This command has generated a line graph of confirmed COVID-19 cases for countries in Northern Africa.</p>
+<p>From earlier steps, we know that the dataset <code>northern_africa</code> contains data from multiple countries: `r unique(northern_africa$country’</p>
+<p>We can add more information to the ggplot command to draw separate lines for each country</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="session-4-data-visualisation.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(northern_africa, <span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>cases, <span class="at">color=</span>country)) <span class="sc">+</span></span>
+<span id="cb135-2"><a href="session-4-data-visualisation.html#cb135-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 9 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p>To make the graph more presentable, we can add more options to the ggplot command</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="session-4-data-visualisation.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(northern_africa, <span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>cases, <span class="at">color=</span>country)) <span class="sc">+</span></span>
+<span id="cb137-2"><a href="session-4-data-visualisation.html#cb137-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb137-3"><a href="session-4-data-visualisation.html#cb137-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Date&#39;</span>, <span class="at">y=</span><span class="st">&#39;Total cases&#39;</span>, <span class="at">color=</span><span class="st">&#39;Country&#39;</span>) <span class="sc">+</span> <span class="co">#label axes</span></span>
+<span id="cb137-4"><a href="session-4-data-visualisation.html#cb137-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&#39;top&#39;</span>) <span class="sc">+</span> <span class="co">#place legend at top of graph</span></span>
+<span id="cb137-5"><a href="session-4-data-visualisation.html#cb137-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">&#39;2 months&#39;</span>, <span class="co">#set x axis to have 2 month breaks</span></span>
+<span id="cb137-6"><a href="session-4-data-visualisation.html#cb137-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_minor_breaks =</span> <span class="st">&#39;1 month&#39;</span>, <span class="co">#set x axis to have 1 month breaks</span></span>
+<span id="cb137-7"><a href="session-4-data-visualisation.html#cb137-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_labels =</span> <span class="st">&#39;%b-%y&#39;</span>) <span class="co">#change label for x axis</span></span></code></pre></div>
+<pre><code>## Warning: Removed 9 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p>More information on plotting time-series data using ggplot can be found <a href="https://www.r-graph-gallery.com/279-plotting-time-series-with-ggplot2.html">here</a>.</p>
+<p>It is still difficult to see the data for each country. There is a helpful command called <code>facet_wrap</code> to fix this and allow us to show multiple epicurves by country.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="session-4-data-visualisation.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(northern_africa, <span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>cases, <span class="at">color=</span>country)) <span class="sc">+</span></span>
+<span id="cb139-2"><a href="session-4-data-visualisation.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb139-3"><a href="session-4-data-visualisation.html#cb139-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Date&#39;</span>, <span class="at">y=</span><span class="st">&#39;Total cases&#39;</span>) <span class="sc">+</span> <span class="co">#label axes</span></span>
+<span id="cb139-4"><a href="session-4-data-visualisation.html#cb139-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&#39;none&#39;</span>) <span class="sc">+</span> <span class="co">#remove legend by setting position to &#39;none&#39;</span></span>
+<span id="cb139-5"><a href="session-4-data-visualisation.html#cb139-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">&#39;4 months&#39;</span>, <span class="co">#set x axis to have 2 month breaks</span></span>
+<span id="cb139-6"><a href="session-4-data-visualisation.html#cb139-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_minor_breaks =</span> <span class="st">&#39;2 months&#39;</span>, <span class="co">#set x axis to have 1 month breaks</span></span>
+<span id="cb139-7"><a href="session-4-data-visualisation.html#cb139-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_labels =</span> <span class="st">&#39;%b-%y&#39;</span>) <span class="sc">+</span> <span class="co">#change label for x axis</span></span>
+<span id="cb139-8"><a href="session-4-data-visualisation.html#cb139-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="co"># this will create a separate graph for each country</span></span></code></pre></div>
+<pre><code>## Warning: Removed 9 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<div id="highlighting" class="section level4" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> Highlighting</h4>
+<p>When data are presented for multiple countries, it can be helpful to highlight specific countries to show their path. This can be easily done in ggplot using the package gghighlight. This is covered in the Epidemiologist R handbook Section <a href="https://epirhandbook.com/ggplot-tips.html#highlighting">31.8 Highlighting</a></p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="session-4-data-visualisation.html#cb141-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(gghighlight)</span>
+<span id="cb141-2"><a href="session-4-data-visualisation.html#cb141-2" aria-hidden="true" tabindex="-1"></a>highlight_country_morocco_gph <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(northern_africa, <span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>cases, <span class="at">color=</span>country)) <span class="sc">+</span></span>
+<span id="cb141-3"><a href="session-4-data-visualisation.html#cb141-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb141-4"><a href="session-4-data-visualisation.html#cb141-4" aria-hidden="true" tabindex="-1"></a>  gghighlight<span class="sc">::</span><span class="fu">gghighlight</span>(country <span class="sc">==</span> <span class="st">&quot;Morocco&quot;</span>) <span class="sc">+</span> <span class="co">#highlight data reported by Algeria</span></span>
+<span id="cb141-5"><a href="session-4-data-visualisation.html#cb141-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Date&#39;</span>, <span class="at">y=</span><span class="st">&#39;Total cases&#39;</span>) <span class="sc">+</span> <span class="co">#label axes</span></span>
+<span id="cb141-6"><a href="session-4-data-visualisation.html#cb141-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&#39;none&#39;</span>) <span class="sc">+</span> <span class="co">#remove legend by setting position to &#39;none&#39;</span></span>
+<span id="cb141-7"><a href="session-4-data-visualisation.html#cb141-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">&#39;4 months&#39;</span>, <span class="co">#set x axis to have 2 month breaks</span></span>
+<span id="cb141-8"><a href="session-4-data-visualisation.html#cb141-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_minor_breaks =</span> <span class="st">&#39;2 months&#39;</span>, <span class="co">#set x axis to have 1 month breaks</span></span>
+<span id="cb141-9"><a href="session-4-data-visualisation.html#cb141-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_labels =</span> <span class="st">&#39;%b-%y&#39;</span>)  <span class="co">#change label for x axis</span></span></code></pre></div>
+<pre><code>## Warning: Tried to calculate with group_by(), but the calculation failed.
+## Falling back to ungrouped filter operation...</code></pre>
+<pre><code>## label_key: country</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="session-4-data-visualisation.html#cb144-1" aria-hidden="true" tabindex="-1"></a> highlight_country_morocco_gph</span></code></pre></div>
+<pre><code>## Warning: Removed 9 row(s) containing missing values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 1 row(s) containing missing values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_label_repel).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p>Highlighting can also be applied to graphs with the facet_wrap function applied.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="session-4-data-visualisation.html#cb148-1" aria-hidden="true" tabindex="-1"></a>highlight_country_facet_gph <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(northern_africa, <span class="fu">aes</span>(<span class="at">x=</span>date,<span class="at">y=</span>cases, <span class="at">color=</span>country)) <span class="sc">+</span></span>
+<span id="cb148-2"><a href="session-4-data-visualisation.html#cb148-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb148-3"><a href="session-4-data-visualisation.html#cb148-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Date&#39;</span>, <span class="at">y=</span><span class="st">&#39;Total cases&#39;</span>) <span class="sc">+</span> <span class="co">#label axes</span></span>
+<span id="cb148-4"><a href="session-4-data-visualisation.html#cb148-4" aria-hidden="true" tabindex="-1"></a>  gghighlight<span class="sc">::</span><span class="fu">gghighlight</span>() <span class="sc">+</span> <span class="co">#highlight each country independently</span></span>
+<span id="cb148-5"><a href="session-4-data-visualisation.html#cb148-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&#39;none&#39;</span>) <span class="sc">+</span> <span class="co">#remove legend by setting position to &#39;none&#39;</span></span>
+<span id="cb148-6"><a href="session-4-data-visualisation.html#cb148-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">&#39;4 months&#39;</span>, <span class="co">#set x axis to have 2 month breaks</span></span>
+<span id="cb148-7"><a href="session-4-data-visualisation.html#cb148-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_minor_breaks =</span> <span class="st">&#39;2 months&#39;</span>, <span class="co">#set x axis to have 1 month breaks</span></span>
+<span id="cb148-8"><a href="session-4-data-visualisation.html#cb148-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_labels =</span> <span class="st">&#39;%b-%y&#39;</span>) <span class="sc">+</span> <span class="co">#change label for x axis</span></span>
+<span id="cb148-9"><a href="session-4-data-visualisation.html#cb148-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>country) <span class="co"># this will create a separate graph for each country</span></span></code></pre></div>
+<pre><code>## label_key: country</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="session-4-data-visualisation.html#cb150-1" aria-hidden="true" tabindex="-1"></a>highlight_country_facet_gph</span></code></pre></div>
+<pre><code>## Warning: Removed 9 row(s) containing missing values (geom_path).
+
+## Warning: Removed 9 row(s) containing missing values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_label_repel).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-77-1.png" width="672" /></p>
+</div>
+</div>
+<div id="building-your-confidence" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Building your confidence</h3>
+<p>This code can seem overwhelming at first. The method to build a ggplot is very different to the ‘point and click’ method used in Excel. It will be very helpful to your learning to work through each step and see what changes when you delete/add code.</p>
+<p>There is a very helpful package called <a href="https://github.com/dreamRs/esquisse">eqsuisse</a> which can help you to understand more about how ggplot works.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="session-4-data-visualisation.html#cb153-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(esquisse)</span>
+<span id="cb153-2"><a href="session-4-data-visualisation.html#cb153-2" aria-hidden="true" tabindex="-1"></a>esquisse<span class="sc">::</span><span class="fu">esquisser</span>()</span></code></pre></div>
+<p>Using this package you can drag and drop variables, change the type of graph and make a lot customisations. You can also click the button “code” and it will show you what the ggplot code is for each graph you have selected. This code can then be copied into your R script.</p>
+</div>
+<div id="picking-the-right-graph" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Picking the right graph</h3>
+<p>With so many options to choose from you will find yourself spending a lot of time trying to work out the most effective visualisation for your analysis. Graphs are a very powerful method for visualising complex information but they can be misleading if they are not designed correctly.</p>
+<div id="tuftes-6-fundamental-principles-of-design" class="section level4" number="5.2.3.1">
+<h4><span class="header-section-number">5.2.3.1</span> Tufte’s 6 fundamental principles of design</h4>
+<p>Edward Tufte is a world-famous graphic designer who has published several books focusing on data visualisation. Tufte has suggeseted 6 fundamental principles of design which have been discussed <a href="https://sites.google.com/site/tufteondesign/home/six-fundamental-principles-of-design">here</a> and <a href="https://www.linkedin.com/pulse/edward-tuftes-six-principles-graphical-integrity-radhika-raghu/">here</a>. We will work through the 6 example and consider how we can take them into account when building graphs in ggplot.</p>
+<ol style="list-style-type: decimal">
+<li><p><em>“The representation of numbers, as physically measured on the surface of the graphic itself, should be directly proportional to the numerical quantities measured.”</em></p>
+<p><img src="images/graph_scale.jpg" width="450" /></p>
+<p>Use an accurate scale</p></li>
+<li><p><em>“Clear, detailed, and thorough labeling should be used to defeat graphical distortion and ambiguity. Write out explanations of the data on the graphic itself. Label important events in the data.”</em></p>
+<p><img src="images/bad_labelling.png" width="450" /></p>
+<p>Label the graph so that the reader understands the story you are telling.</p></li>
+<li><p><em>“Show data variation, not design variation.”</em></p>
+<p>Pick colours that can help to tell the story. Don’t have more than 5 colours as it’s difficult to identify individual groups. Use the most commonly used types of graph.</p></li>
+<li><p><em>“In time-series displays of money, deflated and standardized units of monetary measurement are nearly always better than nominal units.”</em></p>
+<p>Use appropriate units to ensure data are comparable. For diseases, consider presenting incidence as cases/100,000 people.</p></li>
+<li><p><em>“The number of information-carrying (variable) dimensions depicted should not exceed the number of dimensions in the data.”</em></p>
+<p><img src="images/Screenshot%202021-07-20%20at%2012.08.46.png" /></p>
+<p>Don’t use pie charts!</p></li>
+<li><p><em>“Graphics must not quote data out of context.”</em></p>
+<p>Ensure your graph is telling the truth!</p></li>
+</ol>
+<p>Due to the structure of code using ggplot these principles can be followed to ensure clean, clear graphics.</p>
+</div>
+</div>
+<div id="visualising-the-moving-average" class="section level3" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Visualising the moving average</h3>
+<p>In a previous section, we added indicators for the rolling average and rolling sum of cases. These indicators can be helpful for identifying trends over time.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="session-4-data-visualisation.html#cb154-1" aria-hidden="true" tabindex="-1"></a>moroocco_covid_cases_graph <span class="ot">&lt;-</span> morocco_covid_cases_mean <span class="sc">%&gt;%</span> </span>
+<span id="cb154-2"><a href="session-4-data-visualisation.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb154-3"><a href="session-4-data-visualisation.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>cases, <span class="at">color=</span>country)) <span class="sc">+</span></span>
+<span id="cb154-4"><a href="session-4-data-visualisation.html#cb154-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>cases_7day_mean)) <span class="sc">+</span></span>
+<span id="cb154-5"><a href="session-4-data-visualisation.html#cb154-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&#39;Month-Year&#39;</span>, </span>
+<span id="cb154-6"><a href="session-4-data-visualisation.html#cb154-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">&#39;Total cases&#39;</span>, </span>
+<span id="cb154-7"><a href="session-4-data-visualisation.html#cb154-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title=</span><span class="st">&#39;Cases and 7-day average (black line)&#39;</span>) <span class="sc">+</span></span>
+<span id="cb154-8"><a href="session-4-data-visualisation.html#cb154-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&#39;none&#39;</span>) <span class="sc">+</span></span>
+<span id="cb154-9"><a href="session-4-data-visualisation.html#cb154-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">&#39;4 months&#39;</span>, <span class="co">#set x axis to have 2 month breaks</span></span>
+<span id="cb154-10"><a href="session-4-data-visualisation.html#cb154-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_minor_breaks =</span> <span class="st">&#39;2 months&#39;</span>, <span class="co">#set x axis to have 1 month breaks</span></span>
+<span id="cb154-11"><a href="session-4-data-visualisation.html#cb154-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">date_labels =</span> <span class="st">&#39;%b-%y&#39;</span>)  <span class="co">#change label for x axis</span></span>
+<span id="cb154-12"><a href="session-4-data-visualisation.html#cb154-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-13"><a href="session-4-data-visualisation.html#cb154-13" aria-hidden="true" tabindex="-1"></a>moroocco_covid_cases_graph</span></code></pre></div>
+<pre><code>## Warning: Removed 1 rows containing missing values (position_stack).</code></pre>
+<pre><code>## Warning: Removed 7 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p>This chart shows the total number of COVID-19 cases for each day in Morocco between January 1, 2020 and May 3, 2021. The red bars show the reported case numbers for each day while the black line show the 7-day average of cases. We can see that there are several dates with substantially higher numbers of cases compared to the neighbouring dates. This could be due to increased testing on specific days but it is more likely due to delays in reporting leading to a backlog of cases reported on specific days. The black line “smooths” out these differences, allowing us to see the overall trend.</p>
+</div>
+<div id="combining-plots" class="section level3" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Combining plots</h3>
+<p>In this section we have created several graphs. We can combine some of these graphs to increase the impact and tell a rich, accurate story using data.</p>
+<p>For example, we have created two graphs focusing on data from Morocco - morocco_covid_cases_gph and highlight_country_morocco_gph. There is a package called patchwork which has been designed to combine graphs made using ggplot.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="session-4-data-visualisation.html#cb157-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(patchwork)</span></code></pre></div>
+<p>More information on combining graphs can be found in the Epidemiologist R handbook Section <a href="https://epirhandbook.com/ggplot-tips.html#combine-plots">31.9: Combine plots</a></p>
+</div>
+</div>
+<div id="useful-resources-2" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Useful resources</h2>
+<p><a href="https://socviz.co/">Data Visualization: A practical introduction</a></p>
+<p><a href="https://anilbas.github.io/teaching/hci/week13/Tufte.pdf">Lessons from Edward Tufte</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="session-3-data-analysis.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

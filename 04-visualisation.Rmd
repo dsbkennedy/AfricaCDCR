@@ -97,7 +97,7 @@ first_cases_africa_table
 
 ## Visualising data using ggplot
 
-One of the key strengths of R is visualising data. There are many packages which have functions you can use to make graphs, tables, maps...the list is endless!
+One of the major strengths of R is visualising data. There are many packages which have functions you can use to make graphs, tables, maps...the list is endless!
 
 The first package of functions we will use for visualising data is another core `tidyverse` package called `ggplot2.` This is commonly referred to as `ggplot`
 
@@ -150,7 +150,7 @@ ggplot(northern_africa, aes(x=date,y=cases, color=country)) +
   theme(legend.position='top') + #place legend at top of graph
   scale_x_date(date_breaks = '2 months', #set x axis to have 2 month breaks
                date_minor_breaks = '1 month', #set x axis to have 1 month breaks
-               date_labels = '%d-%m-%y') #change label for x axis
+               date_labels = '%b-%y') #change label for x axis
 
 ```
 
@@ -160,16 +160,101 @@ It is still difficult to see the data for each country. There is a helpful comma
 
 ```{r}
 ggplot(northern_africa, aes(x=date,y=cases, color=country)) +
-  geom_col() +
+  geom_line() +
   labs(x='Date', y='Total cases') + #label axes
   theme(legend.position='none') + #remove legend by setting position to 'none'
   scale_x_date(date_breaks = '4 months', #set x axis to have 2 month breaks
                date_minor_breaks = '2 months', #set x axis to have 1 month breaks
-               date_labels = '%m-%Y') + #change label for x axis
+               date_labels = '%b-%y') + #change label for x axis
   facet_wrap(~country) # this will create a separate graph for each country
 ```
 
-### Visualising moving average data
+#### Highlighting
+
+When data are presented for multiple countries, it can be helpful to highlight specific countries to show their path. This can be easily done in ggplot using the package gghighlight. This is covered in the Epidemiologist R handbook Section [31.8 Highlighting](https://epirhandbook.com/ggplot-tips.html#highlighting)
+
+```{r}
+pacman::p_load(gghighlight)
+highlight_country_morocco_gph <- ggplot(northern_africa, aes(x=date,y=cases, color=country)) +
+  geom_line() +
+  gghighlight::gghighlight(country == "Morocco") + #highlight data reported by Algeria
+  labs(x='Date', y='Total cases') + #label axes
+  theme(legend.position='none') + #remove legend by setting position to 'none'
+  scale_x_date(date_breaks = '4 months', #set x axis to have 2 month breaks
+               date_minor_breaks = '2 months', #set x axis to have 1 month breaks
+               date_labels = '%b-%y')  #change label for x axis
+ highlight_country_morocco_gph
+```
+
+Highlighting can also be applied to graphs with the facet_wrap function applied.
+
+```{r}
+highlight_country_facet_gph <- ggplot(northern_africa, aes(x=date,y=cases, color=country)) +
+  geom_line() +
+  labs(x='Date', y='Total cases') + #label axes
+  gghighlight::gghighlight() + #highlight each country independently
+  theme(legend.position='none') + #remove legend by setting position to 'none'
+  scale_x_date(date_breaks = '4 months', #set x axis to have 2 month breaks
+               date_minor_breaks = '2 months', #set x axis to have 1 month breaks
+               date_labels = '%b-%y') + #change label for x axis
+  facet_wrap(~country) # this will create a separate graph for each country
+highlight_country_facet_gph
+```
+
+### Building your confidence
+
+This code can seem overwhelming at first. The method to build a ggplot is very different to the 'point and click' method used in Excel. It will be very helpful to your learning to work through each step and see what changes when you delete/add code.
+
+There is a very helpful package called [eqsuisse](https://github.com/dreamRs/esquisse) which can help you to understand more about how ggplot works.
+
+```{r eval=FALSE, echo=TRUE}
+pacman::p_load(esquisse)
+esquisse::esquisser()
+```
+
+Using this package you can drag and drop variables, change the type of graph and make a lot customisations. You can also click the button "code" and it will show you what the ggplot code is for each graph you have selected. This code can then be copied into your R script.
+
+### Picking the right graph
+
+With so many options to choose from you will find yourself spending a lot of time trying to work out the most effective visualisation for your analysis. Graphs are a very powerful method for visualising complex information but they can be misleading if they are not designed correctly.
+
+#### Tufte's 6 fundamental principles of design
+
+Edward Tufte is a world-famous graphic designer who has published several books focusing on data visualisation. Tufte has suggeseted 6 fundamental principles of design which have been discussed [here](https://sites.google.com/site/tufteondesign/home/six-fundamental-principles-of-design) and [here](https://www.linkedin.com/pulse/edward-tuftes-six-principles-graphical-integrity-radhika-raghu/). We will work through the 6 example and consider how we can take them into account when building graphs in ggplot.
+
+1.  *"The representation of numbers, as physically measured on the surface of the graphic itself, should be directly proportional to the numerical quantities measured."*
+
+    ![](images/graph_scale.jpg){width="450"}
+
+    Use an accurate scale
+
+2.  *"Clear, detailed, and thorough labeling should be used to defeat graphical distortion and ambiguity. Write out explanations of the data on the graphic itself. Label important events in the data."*
+
+    ![](images/bad_labelling.png){width="450"}
+
+    Label the graph so that the reader understands the story you are telling.
+
+3.  *"Show data variation, not design variation."*
+
+    Pick colours that can help to tell the story. Don't have more than 5 colours as it's difficult to identify individual groups. Use the most commonly used types of graph.
+
+4.  *"In time-series displays of money, deflated and standardized units of monetary measurement are nearly always better than nominal units."*
+
+    Use appropriate units to ensure data are comparable. For diseases, consider presenting incidence as cases/100,000 people.
+
+5.  *"The number of information-carrying (variable) dimensions depicted should not exceed the number of dimensions in the data."*
+
+    ![](images/Screenshot%202021-07-20%20at%2012.08.46.png)
+
+    Don't use pie charts!
+
+6.  *"Graphics must not quote data out of context."*
+
+    Ensure your graph is telling the truth!
+
+Due to the structure of code using ggplot these principles can be followed to ensure clean, clear graphics.
+
+### Visualising the moving average 
 
 In a previous section, we added indicators for the rolling average and rolling sum of cases. These indicators can be helpful for identifying trends over time.
 
@@ -182,15 +267,29 @@ moroocco_covid_cases_graph <- morocco_covid_cases_mean %>%
        y='Total cases', 
        title='Cases and 7-day average (black line)') +
   theme(legend.position='none') +
-  scale_x_date(date_breaks = '2 months', 
-               date_minor_breaks = '1 month',
-               date_labels = '%m-%y') 
+  scale_x_date(date_breaks = '4 months', #set x axis to have 2 month breaks
+               date_minor_breaks = '2 months', #set x axis to have 1 month breaks
+               date_labels = '%b-%y')  #change label for x axis
 
 moroocco_covid_cases_graph
 ```
 
 This chart shows the total number of COVID-19 cases for each day in Morocco between January 1, 2020 and May 3, 2021. The red bars show the reported case numbers for each day while the black line show the 7-day average of cases. We can see that there are several dates with substantially higher numbers of cases compared to the neighbouring dates. This could be due to increased testing on specific days but it is more likely due to delays in reporting leading to a backlog of cases reported on specific days. The black line "smooths" out these differences, allowing us to see the overall trend.
 
+### Combining plots
+
+In this section we have created several graphs. We can combine some of these graphs to increase the impact and tell a rich, accurate story using data.
+
+For example, we have created two graphs focusing on data from Morocco - morocco_covid_cases_gph and highlight_country_morocco_gph. There is a package called patchwork which has been designed to combine graphs made using ggplot.
+
+```{r}
+pacman::p_load(patchwork)
+```
+
+More information on combining graphs can be found in the Epidemiologist R handbook Section [31.9: Combine plots](https://epirhandbook.com/ggplot-tips.html#combine-plots)
+
 ## Useful resources
 
 [Data Visualization: A practical introduction](https://socviz.co/)
+
+[Lessons from Edward Tufte](https://anilbas.github.io/teaching/hci/week13/Tufte.pdf)

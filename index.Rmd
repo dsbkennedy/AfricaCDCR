@@ -1,0 +1,15 @@
+---
+title: "R Training Manual"
+author: "UK Public Health Rapid Support Team"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+  #bookdown::pdf_book: default
+---
+
+# Preface
+
+This training resource has been developed to provide an introduction to the statistical programming language R. The aim is to provide additional guidance to learners as they work through the recently launched [Epidemiologist R handbook](https://epirhandbook.com/). 
+
+
